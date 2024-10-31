@@ -1,11 +1,17 @@
+'use client'
+
+import { useLanguage } from '@/context/language'
+
 export function Stats() {
+  const { dictionary } = useLanguage()
+
   const stats = [
-    { label: 'Projects Completed', value: '73+' },
-    { label: 'Technologies Mastered', value: '15+' },
-    { label: 'Satisfied Clients', value: '57+' },
-    { label: 'Years of Experience', value: '2+' },
-    { label: 'Countries Served', value: '4+' },
-    { label: 'Repositories Contributed', value: '7+' },
+    { label: dictionary.projects_completed, value: '73+' },
+    { label: dictionary.technologies_mastered, value: '15+' },
+    { label: dictionary.satisfied_clients, value: '57+' },
+    { label: dictionary.years_of_experience, value: '2+' },
+    { label: dictionary.countries_served, value: '4+' },
+    { label: dictionary.repositories_contributed, value: '7+' },
   ]
 
   return (

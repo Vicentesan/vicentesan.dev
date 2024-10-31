@@ -3,6 +3,8 @@
 import { ArrowUpRight, Mail } from 'lucide-react'
 import Link from 'next/link'
 
+import { useLanguage } from '@/context/language'
+
 import { Icons } from './icons'
 import { Button } from './ui/button'
 
@@ -26,6 +28,8 @@ export function Hero() {
     { icon: Mail, label: 'Email', href: 'mailto:hello@vicentesan.dev' },
   ]
 
+  const { dictionary } = useLanguage()
+
   return (
     <div className="grid grid-cols-1 gap-20 lg:grid-cols-[1fr,400px]">
       <div className="space-y-12">
@@ -33,7 +37,7 @@ export function Hero() {
           <div className="inline-flex items-center space-x-2 rounded-full border border-gray-200 bg-gray-100/50 px-3 py-1 dark:border-zinc-800 dark:bg-zinc-900/50">
             <div className="h-2 w-2 animate-pulse rounded-full bg-blue-600 dark:bg-teal-400" />
             <span className="text-sm text-gray-500 dark:text-zinc-400">
-              {/* {dictionary.available_for_work} */} Available for work
+              {dictionary.available}
             </span>
           </div>
           <div className="space-y-4">
@@ -41,32 +45,29 @@ export function Hero() {
               Vicente Sanchez
             </h1>
             <p className="text-2xl text-gray-500 dark:text-zinc-400">
-              {/* {dictionary.full_stack_freelance_developer} */} Full stack
-              freelance developer
+              {dictionary.full_stack_freelance_developer}
             </p>
           </div>
           <p className="text-lg leading-relaxed text-gray-500 dark:text-zinc-400">
-            {/* {dictionary.i_am} */} I am here to{' '}
+            {dictionary.and_i_am}{' '}
             <span className="font-bold text-gray-800 dark:text-zinc-200">
-              {/* {dictionary.build_your_next_digital_solution} */} build your
-              next digital solution
+              {dictionary.build_your_next_digital_solution}
             </span>
-            , {/* {dictionary.crafting} */} crafting{' '}
+            , {dictionary.crafting}{' '}
             <span className="font-bold text-gray-800 dark:text-zinc-200">
-              {/* {dictionary.exceptional} */} exceptional
+              {dictionary.exceptional}
             </span>{' '}
-            and{' '}
+            {dictionary._post_exceptional_and}{' '}
             <span className="font-bold text-gray-800 dark:text-zinc-200">
-              {/* {dictionary.accessible} */} accessible
+              {dictionary.accessible}
             </span>{' '}
-            web experiences with a focus on{' '}
+            {dictionary.web_experiences_with_a_focus_on}{' '}
             <span className="font-bold text-gray-800 dark:text-zinc-200">
-              {/* {dictionary.clean_design_patterns} */} clean design patterns
+              {dictionary.clean_design_patterns}
             </span>{' '}
-            and{' '}
+            {dictionary.and}{' '}
             <span className="font-bold text-gray-800 dark:text-zinc-200">
-              {/* {dictionary.thoughtful_interactions} */} thoughtful
-              interactions
+              {dictionary.thoughtful_interactions}
             </span>
             .
           </p>
