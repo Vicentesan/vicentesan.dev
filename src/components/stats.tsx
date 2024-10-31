@@ -1,8 +1,11 @@
 export function Stats() {
   const stats = [
-    { label: 'Projects Completed', value: '23+' },
-    { label: 'Technologies', value: '15+' },
-    { label: 'Satisfied Clients', value: '50+' },
+    { label: 'Projects Completed', value: '73+' },
+    { label: 'Technologies Mastered', value: '15+' },
+    { label: 'Satisfied Clients', value: '57+' },
+    { label: 'Years of Experience', value: '2+' },
+    { label: 'Countries Served', value: '4+' },
+    { label: 'Repositories Contributed', value: '7+' },
   ]
 
   return (
