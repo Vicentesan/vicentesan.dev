@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+
 import { LangSwitcher } from '@/components/lang-switcher'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
 import { AppWrapper } from '@/context/app'
@@ -16,6 +18,48 @@ export const dynamic = 'force-dynamic'
 type RootLayoutProps = {
   children: React.ReactNode
   params: { lang: Language }
+}
+
+export const metadata: Metadata = {
+  title: {
+    template: 'Vicente Sanchez',
+    default: 'Vicente Sanchez',
+  },
+  icons: {
+    icon: [
+      {
+        url: '/favicon.ico',
+        sizes: 'any',
+      },
+      {
+        url: '/favicon.svg',
+        type: 'image/svg+xml',
+      },
+      {
+        url: '/favicon-96x96.png',
+        sizes: '96x96',
+        type: 'image/png',
+      },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [
+      {
+        url: '/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+    other: [
+      {
+        rel: 'manifest',
+        url: '/site.webmanifest',
+      },
+    ],
+  },
+  appleWebApp: {
+    title: 'Vicente Sanchez',
+    statusBarStyle: 'default',
+  },
 }
 
 export default async function RootLayout({
