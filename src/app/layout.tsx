@@ -3,8 +3,9 @@ import './globals.css'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 
-import { Header } from '@/components/header'
 import { Pattern } from '@/components/pattern'
+import { cn } from '@/lib/utils'
+import type { Language } from '@/types/langs'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -22,18 +23,28 @@ export const metadata: Metadata = {
   description: 'Obsessed with building products that help people',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type RootLayoutProps = {
   children: React.ReactNode
-}>) {
+  params: Promise<{ lang: Language }>
+}
+
+export default async function RootLayout({
+  children,
+  params,
+}: RootLayoutProps) {
+  const { lang } = await params
+
   return (
-    <html lang="en">
+    <html lang={lang} suppressHydrationWarning>
       <body
-        className={`dark m-10 overflow-hidden font-mono ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          geistSans.variable,
+          geistMono.variable,
+          'dark m-10 overflow-hidden font-mono antialiased',
+        )}
       >
         <Pattern variant="checkered" />
-        <Header />
+
         {children}
       </body>
     </html>
