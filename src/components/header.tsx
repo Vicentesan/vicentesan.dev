@@ -8,16 +8,16 @@ export function Header() {
           Vicente Sanchez
         </Link>
 
-        <span className="bg-muted-foreground size-1 rounded-full" />
+        <span className="size-1 rounded-full bg-muted-foreground" />
 
         <div className="flex items-center gap-2 text-2xl">
           <Link href="/">Home</Link>
 
-          <span className="bg-border h-6 w-px" />
+          <span className="h-6 w-px bg-border" />
 
           <Link href="/about">About</Link>
 
-          <span className="bg-border h-6 w-px" />
+          <span className="h-6 w-px bg-border" />
 
           <Link href="/projects">Projects</Link>
         </div>
