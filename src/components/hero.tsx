@@ -1,14 +1,23 @@
 'use client'
 
-import { ArrowUpRight, Mail } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import Link from 'next/link'
 
 import { useLanguage } from '@/context/language'
 
 import { Icons } from './icons'
+import { QuoteButton } from './quote-button'
 import { Button } from './ui/button'
 
-export function Hero() {
+interface HeroProps {
+  setIsQuoteModalOpen: (isOpen: boolean) => void
+  setIsViewQuoteStatusModalOpen: (isOpen: boolean) => void
+}
+
+export function Hero({
+  setIsQuoteModalOpen,
+  setIsViewQuoteStatusModalOpen,
+}: HeroProps) {
   const items = [
     {
       icon: Icons.Github,
@@ -79,17 +88,21 @@ export function Hero() {
               key={label}
               asChild
               variant="outline"
-              className="group text-zinc-800 dark:text-zinc-400"
+              className="group w-28 text-zinc-800 dark:text-zinc-400"
             >
               <Link
                 href={label !== 'Email' ? href : 'mailto:hello@vicentesan.dev'}
               >
                 <Icon className="h-5 w-5" />
                 <span>{label}</span>
-                <ArrowUpRight className="h-4 w-4 -translate-y-1 opacity-0 transition-all duration-300 ease-in-out group-hover:translate-y-0 group-hover:opacity-100" />
               </Link>
             </Button>
           ))}
+
+          <QuoteButton
+            setIsViewQuoteStatusModalOpen={setIsViewQuoteStatusModalOpen}
+            setIsQuoteModalOpen={setIsQuoteModalOpen}
+          />
         </div>
       </div>
 
