@@ -17,7 +17,7 @@ export const dynamic = 'force-dynamic'
 
 type RootLayoutProps = {
   children: React.ReactNode
-  params: { lang: Language }
+  params: Promise<{ lang: Language }>
 }
 
 export const metadata: Metadata = {
@@ -64,8 +64,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params: { lang },
+  params,
 }: RootLayoutProps) {
+  const { lang } = await params
+
   const dictionary = await getDictionary(lang)
 
   return (
