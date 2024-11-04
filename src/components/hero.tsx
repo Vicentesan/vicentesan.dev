@@ -35,7 +35,7 @@ export function Hero() {
       <div className="space-y-12">
         <div className="space-y-6">
           <div className="inline-flex items-center space-x-2 rounded-full border border-gray-200 bg-gray-100/50 px-3 py-1 dark:border-zinc-800 dark:bg-zinc-900/50">
-            <div className="h-2 w-2 animate-pulse rounded-full bg-blue-600 dark:bg-teal-400" />
+            <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-500 dark:bg-emerald-300" />
             <span className="text-sm text-gray-500 dark:text-zinc-400">
               {dictionary.available}
             </span>
@@ -86,7 +86,7 @@ export function Hero() {
               >
                 <Icon className="h-5 w-5" />
                 <span>{label}</span>
-                <ArrowUpRight className="h-4 w-4 -translate-y-1 opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100" />
+                <ArrowUpRight className="h-4 w-4 -translate-y-1 opacity-0 transition-all duration-300 ease-in-out group-hover:translate-y-0 group-hover:opacity-100" />
               </Link>
             </Button>
           ))}
@@ -94,7 +94,7 @@ export function Hero() {
       </div>
 
       <div className="group relative">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-blue-500/20 to-indigo-500/20 blur-3xl transition-all duration-500 group-hover:rotate-12 group-hover:scale-105 dark:from-teal-500/20 dark:to-purple-500/20" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-purple-500/20 to-purple-500/20 blur-3xl transition-all duration-500 group-hover:rotate-12 group-hover:scale-105 dark:from-purple-300/20 dark:to-purple-500/20" />
         <div className="aspect-square overflow-hidden rounded-lg border border-gray-200 bg-gray-100 transition-all duration-500 group-hover:translate-x-2 group-hover:translate-y-1 group-hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
           <img
             src="/vicente-san.jpg"
