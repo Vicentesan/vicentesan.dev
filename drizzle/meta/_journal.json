@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1731023374630,
+      "tag": "20241107234934_add-base-db-structure",
+      "breakpoints": true
+    }
+  ]
+}
