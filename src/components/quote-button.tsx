@@ -63,11 +63,8 @@ export function QuoteButton({
   const { dictionary } = useLanguage()
 
   return (
-    <div className="flex w-full flex-col gap-2">
-      <Button
-        className="w-[calc(100%-3rem)]"
-        onClick={() => setIsQuoteModalOpen(true)}
-      >
+    <div className="xs:w-[498px] flex w-[238px] flex-col items-center justify-center gap-2">
+      <Button className="w-full" onClick={() => setIsQuoteModalOpen(true)}>
         <div
           className="group flex items-center justify-center gap-2 transition-colors duration-200"
           // onMouseEnter={() => {
@@ -111,7 +108,7 @@ export function QuoteButton({
 
       <button
         onClick={() => setIsViewQuoteStatusModalOpen(true)}
-        className="relative mx-[calc(8.5rem)] inline-block w-fit text-muted-foreground after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 after:bg-neutral-400 after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100"
+        className="relative inline-block w-fit text-muted-foreground after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 after:bg-neutral-400 after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100"
       >
         <span className="text-center">{dictionary.view_quote_status}</span>
       </button>
