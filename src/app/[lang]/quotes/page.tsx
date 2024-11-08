@@ -151,7 +151,7 @@ export default function AllQuotesPage() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="container mx-auto px-4 py-8"
+      className="container mx-auto min-h-screen px-4 py-8"
     >
       <div className="mx-auto max-w-4xl space-y-6">
         <motion.div
