@@ -24,17 +24,21 @@ export const metadata: Metadata = {
   description: 'Obsessed with building products that help people',
 }
 
-type LayoutProps = {
+interface RootLayoutProps {
   children: React.ReactNode
-  params: {
-    lang: Language
-  }
+  params: Promise<{ lang: string }>
 }
 
-export default function RootLayout({ children, params }: LayoutProps) {
+export default async function RootLayout({
+  children,
+  params,
+}: RootLayoutProps) {
+  const resolvedParams = await params
+  const lang = resolvedParams.lang as Language
+
   return (
     <html
-      lang={params.lang}
+      lang={lang}
       suppressHydrationWarning
       className={cn(geistSans.variable, geistMono.variable)}
     >
