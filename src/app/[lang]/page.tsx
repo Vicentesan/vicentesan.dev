@@ -1,5 +1,6 @@
 'use client'
 
+import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
 import { Hero } from '@/components/hero'
@@ -12,6 +13,8 @@ export default function Home() {
   const [isViewQuoteStatusModalOpen, setIsViewQuoteStatusModalOpen] =
     useState(false)
 
+  const searchParams = useSearchParams()
+  const quoteId = searchParams.get('quoteId') ?? undefined
   return (
     <>
       <div className="min-h-screen text-zinc-100 selection:bg-purple-500/20 selection:text-purple-200">
@@ -30,7 +33,8 @@ export default function Home() {
       <QuoteModal isOpen={isQuoteModalOpen} setIsOpen={setIsQuoteModalOpen} />
       <ViewQuoteStatusModal
         isOpen={isViewQuoteStatusModalOpen}
-        setIsOpen={setIsViewQuoteStatusModalOpen}
+        quoteId={quoteId}
+        onClose={() => setIsViewQuoteStatusModalOpen(false)}
       />
     </>
   )

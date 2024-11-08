@@ -29,13 +29,16 @@ const quoteFormSchema = z.object({
 
 export const appRouter = router({
   requestMagicLink: publicProcedure
-    .input(z.object({ email: z.string().email() }))
+    .input(
+      z.object({
+        email: z.string().email(),
+        redirectTo: z.string().optional(),
+      }),
+    )
     .mutation(async ({ input }) => {
       const userFromEmail = await db.query.clients.findFirst({
         where: eq(clients.email, input.email.toLocaleLowerCase()),
       })
-
-      console.log('userFromEmail', userFromEmail)
 
       if (!userFromEmail) return
 
@@ -53,7 +56,10 @@ export const appRouter = router({
       )
 
       authLinkUrl.searchParams.set('code', authLink.code)
-      authLinkUrl.searchParams.set('redirect', env.NEXT_PUBLIC_BASE_URL)
+      authLinkUrl.searchParams.set(
+        'redirect',
+        input.redirectTo || env.NEXT_PUBLIC_BASE_URL,
+      )
 
       const { error, data } = await resend.emails.send({
         from: 'Vicente Sanchez <hello@vicentesan.dev>',

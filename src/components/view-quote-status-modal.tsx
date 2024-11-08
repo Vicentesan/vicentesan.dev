@@ -2,7 +2,7 @@
 
 import { getCookie } from 'cookies-next'
 import { Loader2, TriangleAlertIcon } from 'lucide-react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -21,12 +21,14 @@ import { Input } from './ui/input'
 
 interface ViewQuoteStatusModalProps {
   isOpen: boolean
-  setIsOpen: (open: boolean) => void
+  onClose: () => void
+  quoteId?: string
 }
 
 export function ViewQuoteStatusModal({
   isOpen,
-  setIsOpen,
+  onClose,
+  quoteId,
 }: ViewQuoteStatusModalProps) {
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [quoteDetails, setQuoteDetails] = useState<{
@@ -53,22 +55,13 @@ export function ViewQuoteStatusModal({
     },
   )
 
-  const [quoteId, setQuoteId] = useState('')
   const [quoteCode, setQuoteCode] = useState('')
 
-  const params = useSearchParams()
-
   useEffect(() => {
-    const quoteId = params.get('quoteId')
-    if (quoteId) {
-      setQuoteId(quoteId)
+    if (quoteId && quoteId !== '') {
+      setQuoteCode(quoteId)
     }
-
-    const openModal = params.get('openModal')
-    if (openModal) {
-      setIsOpen(true)
-    }
-  }, [params, isOpen, setIsOpen])
+  }, [quoteId])
 
   useEffect(() => {
     if (isFetched && !session?.user) {
@@ -98,11 +91,11 @@ export function ViewQuoteStatusModal({
     }
   }, [isQuoteFetched, data])
 
-  useEffect(() => {
-    if (isOpen === false) {
-      router.push(`/${language}?quoteId=${quoteCode}`)
-    }
-  }, [setIsOpen, isOpen, router, language, quoteCode])
+  const handleClose = () => {
+    const url = new URL(window.location.href)
+    router.replace(url.pathname)
+    onClose()
+  }
 
   if ((!session?.user || !session.user.id) && (quoteId || quoteCode)) {
     return (
@@ -115,7 +108,7 @@ export function ViewQuoteStatusModal({
 
   if (!quoteId || !quoteCode) {
     return (
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <Dialog open={isOpen} onOpenChange={handleClose}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Enter quote ID</DialogTitle>
@@ -138,7 +131,7 @@ export function ViewQuoteStatusModal({
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[600px]">
         <DialogHeader>
           <DialogTitle>{dictionary.view_quote_status}</DialogTitle>

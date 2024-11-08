@@ -20,9 +20,10 @@ import { trpc } from '@/lib/trpc'
 interface AuthModalProps {
   isOpen: boolean
   onClose: () => void
+  redirectTo?: string
 }
 
-export function AuthModal({ isOpen, onClose }: AuthModalProps) {
+export function AuthModal({ isOpen, onClose, redirectTo }: AuthModalProps) {
   const [email, setEmail] = useState('')
   const { mutateAsync: sendMagicLink, isPending } =
     trpc.requestMagicLink.useMutation({
@@ -39,7 +40,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    await sendMagicLink({ email })
+    await sendMagicLink({ email, redirectTo })
   }
 
   return (
