@@ -63,7 +63,7 @@ export function QuoteButton({
   const { dictionary } = useLanguage()
 
   return (
-    <div className="flex w-[238px] flex-col items-center justify-center gap-2 xs:w-[498px]">
+    <div className="xs:w-[498px] flex w-[238px] flex-col items-center justify-center gap-2">
       <Button className="w-full" onClick={() => setIsQuoteModalOpen(true)}>
         <div
           className="group flex items-center justify-center gap-2 transition-colors duration-200"
