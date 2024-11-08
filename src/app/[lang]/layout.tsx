@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 import { LangSwitcher } from '@/components/lang-switcher'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
+import { Toaster } from '@/components/ui/sonner'
 import { AppWrapper } from '@/context/app'
 import { LanguageContextProvider } from '@/context/language'
 import type { Language } from '@/types/languages'
@@ -80,6 +81,7 @@ export default async function RootLayout({
             <span className="h-6 w-px bg-muted" />
 
             <ThemeToggle />
+            <Toaster richColors position="top-right" closeButton />
           </header>
           {children}
         </main>
