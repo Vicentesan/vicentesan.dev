@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import confetti from 'canvas-confetti'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, Loader2 } from 'lucide-react'
 import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
@@ -32,19 +32,28 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
+import { trpc } from '@/lib/trpc'
 
 import { StepCounter } from './steps-counter'
 
 const firstStepFormSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
+  phone: z
+    .string()
+    .regex(
+      /^\([0-9]{2}\) [0-9]{5}-[0-9]{4}$/,
+      'Invalid phone format. Use (XX) XXXXX-XXXX',
+    ),
   email: z.string().email('Invalid email address'),
   company: z.string().optional(),
+  projectName: z.string().min(2, 'Project name must be at least 2 characters'),
 })
 
 const secondStepFormSchema = z.object({
   projectDetails: z
     .string()
     .min(10, 'Please provide more details about your project'),
+  type: z.enum(['api', 'web', 'mobile', 'desktop', 'unfinished', 'other']),
   budget: z.enum(['1k', '2k', '3k', '5k', 'custom']),
   deliveryTime: z.enum(['short', 'normal', 'medium', 'flexible', 'urgent']),
 })
@@ -62,7 +71,6 @@ interface QuoteModalProps {
 export function QuoteModal({ isOpen, setIsOpen }: QuoteModalProps) {
   const [step, setStep] = useState<0 | 1 | 'done'>(0)
   const [isStepValid, setIsStepValid] = useState(false)
-  const [isPending, setIsPending] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -78,16 +86,23 @@ export function QuoteModal({ isOpen, setIsOpen }: QuoteModalProps) {
 
   const validateCurrentStep = useCallback(() => {
     if (step === 0) {
-      const { name, email, company } = formValues
-      const result = firstStepFormSchema.safeParse({ name, email, company })
+      const { name, email, phone, projectName } = formValues
+      const result = firstStepFormSchema.safeParse({
+        name,
+        email,
+        phone,
+        projectName,
+        company: formValues.company || undefined,
+      })
       setIsStepValid(result.success)
       return result.success
     }
 
     if (step === 1) {
-      const { projectDetails, budget, deliveryTime } = formValues
+      const { projectDetails, type, budget, deliveryTime } = formValues
       const result = secondStepFormSchema.safeParse({
         projectDetails,
+        type,
         budget,
         deliveryTime,
       })
@@ -102,12 +117,20 @@ export function QuoteModal({ isOpen, setIsOpen }: QuoteModalProps) {
     validateCurrentStep()
   }, [validateCurrentStep, formValues])
 
+  const {
+    mutateAsync: createAsyncQuote,
+    isPending,
+    data,
+  } = trpc.createQuote.useMutation()
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     if (step === 1) {
       try {
-        setIsPending(true)
         // Submit form logic here
-        console.log(values)
+        await createAsyncQuote({
+          ...values,
+          details: values.projectDetails,
+        })
         setStep('done')
         confetti({
           particleCount: 100,
@@ -116,8 +139,6 @@ export function QuoteModal({ isOpen, setIsOpen }: QuoteModalProps) {
         })
       } catch (error) {
         console.error('Error submitting quote:', error)
-      } finally {
-        setIsPending(false)
       }
     }
   }
@@ -131,6 +152,17 @@ export function QuoteModal({ isOpen, setIsOpen }: QuoteModalProps) {
     },
     [touchedFields, errors],
   )
+
+  const formatPhoneNumber = (value: string) => {
+    // Remove all non-numeric characters
+    const numbers = value.replace(/\D/g, '')
+
+    // Format the number as (XX) XXXXX-XXXX
+    if (numbers.length <= 2) return numbers
+    if (numbers.length <= 7)
+      return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`
+  }
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -180,6 +212,46 @@ export function QuoteModal({ isOpen, setIsOpen }: QuoteModalProps) {
 
                   <FormField
                     control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Phone</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="(11) 99999-9999"
+                            type="tel"
+                            {...field}
+                            onChange={(e) => {
+                              const formatted = formatPhoneNumber(
+                                e.target.value,
+                              )
+                              if (formatted.length <= 15) {
+                                field.onChange(formatted)
+                              }
+                            }}
+                          />
+                        </FormControl>
+                        {shouldShowError('phone') && <FormMessage />}
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="projectName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Project Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Your project name" {...field} />
+                        </FormControl>
+                        {shouldShowError('projectName') && <FormMessage />}
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
                     name="company"
                     render={({ field }) => (
                       <FormItem>
@@ -204,12 +276,45 @@ export function QuoteModal({ isOpen, setIsOpen }: QuoteModalProps) {
                         <FormLabel>Project Details</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Tell me about your project..."
-                            className="min-h-[100px]"
+                            placeholder="Tell us more about your project..."
+                            className="min-h-[120px]"
                             {...field}
                           />
                         </FormControl>
                         {shouldShowError('projectDetails') && <FormMessage />}
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="type"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Project Type</FormLabel>
+                        <FormControl>
+                          <Select
+                            onValueChange={field.onChange}
+                            value={field.value}
+                          >
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select a project type" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectGroup>
+                                <SelectItem value="api">API</SelectItem>
+                                <SelectItem value="web">Web</SelectItem>
+                                <SelectItem value="mobile">Mobile</SelectItem>
+                                <SelectItem value="desktop">Desktop</SelectItem>
+                                <SelectItem value="unfinished">
+                                  Unfinished
+                                </SelectItem>
+                                <SelectItem value="other">Other</SelectItem>
+                              </SelectGroup>
+                            </SelectContent>
+                          </Select>
+                        </FormControl>
+                        {shouldShowError('type') && <FormMessage />}
                       </FormItem>
                     )}
                   />
@@ -303,6 +408,7 @@ export function QuoteModal({ isOpen, setIsOpen }: QuoteModalProps) {
                   <p className="text-center text-muted-foreground">
                     We'll get back to you shortly with a detailed quote.
                   </p>
+                  <p>Your quote ID is: {data?.quoteId}</p>
                 </div>
               )}
             </div>
@@ -340,6 +446,7 @@ export function QuoteModal({ isOpen, setIsOpen }: QuoteModalProps) {
                     className="w-full"
                     disabled={!isStepValid || isPending}
                   >
+                    {isPending && <Loader2 className="size-4 animate-spin" />}
                     Submit
                   </Button>
                 )}

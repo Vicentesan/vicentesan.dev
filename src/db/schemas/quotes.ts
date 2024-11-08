@@ -61,6 +61,8 @@ export const quotes = pgTable(
     additionalInfo: text('additional_info'),
     deliveryTime: quoteDeliveryTimeEnum('delivery_time').notNull(),
 
+    details: varchar('details', { length: 255 }),
+
     status: quoteStatusEnum('status').notNull().default('pending'),
     createdAt: timestamp('created_at', { withTimezone: true })
       .notNull()
