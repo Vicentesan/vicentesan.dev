@@ -63,7 +63,12 @@ export function ViewQuoteStatusModal({
     if (quoteId) {
       setQuoteId(quoteId)
     }
-  }, [params])
+
+    const openModal = params.get('openModal')
+    if (openModal) {
+      setIsOpen(true)
+    }
+  }, [params, isOpen, setIsOpen])
 
   useEffect(() => {
     if (isFetched && !session?.user) {
@@ -92,6 +97,12 @@ export function ViewQuoteStatusModal({
       setQuoteDetails(data.quote)
     }
   }, [isQuoteFetched, data])
+
+  useEffect(() => {
+    if (isOpen === false) {
+      router.push(`/${language}?quoteId=${quoteCode}`)
+    }
+  }, [setIsOpen, isOpen, router, language, quoteCode])
 
   if ((!session?.user || !session.user.id) && (quoteId || quoteCode)) {
     return (

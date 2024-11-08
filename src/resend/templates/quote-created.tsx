@@ -24,7 +24,7 @@ export function QuoteCreatedTemplate({
   quoteId,
 }: QuoteCreatedTemplateProps) {
   const previewText = `Quote #${quoteId} created successfully`
-  const quoteLink = `${env.NEXT_PUBLIC_BASE_URL}/quotes/${quoteId}`
+  const quoteLink = `${env.NEXT_PUBLIC_BASE_URL}/?quoteId=${quoteId}&openModal=true`
 
   return (
     <Html>
