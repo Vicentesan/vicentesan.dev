@@ -28,7 +28,9 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode
-  params: { lang: Language }
+  params: {
+    lang: Language
+  }
 }) {
   return (
     <html
