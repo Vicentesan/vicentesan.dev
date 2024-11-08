@@ -12,6 +12,7 @@ const geistSans = localFont({
   variable: '--font-geist-sans',
   weight: '100 900',
 })
+
 const geistMono = localFont({
   src: './fonts/GeistMonoVF.woff',
   variable: '--font-geist-mono',
@@ -23,15 +24,14 @@ export const metadata: Metadata = {
   description: 'Obsessed with building products that help people',
 }
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
+type LayoutProps = {
   children: React.ReactNode
   params: {
     lang: Language
   }
-}) {
+}
+
+export default function RootLayout({ children, params }: LayoutProps) {
   return (
     <html
       lang={params.lang}
@@ -41,7 +41,6 @@ export default async function RootLayout({
       <head>
         <meta name="theme-color" content="#09090b" />
       </head>
-
       <body className="m-10 overflow-x-hidden font-mono antialiased lg:overflow-hidden">
         <Pattern variant="checkered" />
         {children}
