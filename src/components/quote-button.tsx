@@ -4,6 +4,7 @@
 import { CircleDollarSignIcon } from 'lucide-react'
 
 import { useLanguage } from '@/context/language'
+import { useMediaQuery } from '@/hooks/use-media-query'
 
 import { Button } from './ui/button'
 
@@ -62,8 +63,10 @@ export function QuoteButton({
 
   const { dictionary } = useLanguage()
 
+  const isMobile = useMediaQuery('(max-width: 337px)')
+
   return (
-    <div className="xs:w-[498px] flex w-[238px] flex-col items-center justify-center gap-2">
+    <div className="xxs:w-[238px] flex w-full flex-col items-center justify-center gap-2 sm:w-[498px]">
       <Button className="w-full" onClick={() => setIsQuoteModalOpen(true)}>
         <div
           className="group flex items-center justify-center gap-2 transition-colors duration-200"
@@ -74,7 +77,7 @@ export function QuoteButton({
           //   controls.start('normal')
           // }}
         >
-          {dictionary.ask_for_a_quote}
+          {isMobile ? dictionary.quote : dictionary.ask_for_a_quote}
 
           {/* <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -107,6 +110,7 @@ export function QuoteButton({
       </Button>
 
       <button
+        type="button"
         onClick={() => setIsViewQuoteStatusModalOpen(true)}
         className="relative inline-block w-fit text-muted-foreground after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-bottom-right after:scale-x-0 after:bg-neutral-400 after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100"
       >

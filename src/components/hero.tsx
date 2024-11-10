@@ -4,6 +4,8 @@ import { Mail } from 'lucide-react'
 import Link from 'next/link'
 
 import { useLanguage } from '@/context/language'
+import { useMediaQuery } from '@/hooks/use-media-query'
+import { cn } from '@/lib/utils'
 
 import { Icons } from './icons'
 import { QuoteButton } from './quote-button'
@@ -36,6 +38,8 @@ export function Hero({
     },
     { icon: Mail, label: 'Email', href: 'mailto:hello@vicentesan.dev' },
   ]
+
+  const isMobile = useMediaQuery('(max-width: 337px)')
 
   const { dictionary } = useLanguage()
 
@@ -82,13 +86,17 @@ export function Hero({
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-4">
+        <div
+          className={cn('flex flex-wrap gap-4', {
+            'items-center justify-center': isMobile,
+          })}
+        >
           {items.map(({ icon: Icon, label, href }) => (
             <Button
               key={label}
               asChild
               variant="outline"
-              className="group w-28 text-zinc-800 dark:text-zinc-400"
+              className="xs:w-28 group w-full text-zinc-800 dark:text-zinc-400"
             >
               <Link
                 href={label !== 'Email' ? href : 'mailto:hello@vicentesan.dev'}
