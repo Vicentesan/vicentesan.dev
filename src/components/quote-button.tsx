@@ -66,7 +66,7 @@ export function QuoteButton({
   const isMobile = useMediaQuery('(max-width: 337px)')
 
   return (
-    <div className="xxs:w-[238px] flex w-full flex-col items-center justify-center gap-2 sm:w-[498px]">
+    <div className="flex w-full flex-col items-center justify-center gap-2 xxs:w-[238px] sm:w-[498px]">
       <Button className="w-full" onClick={() => setIsQuoteModalOpen(true)}>
         <div
           className="group flex items-center justify-center gap-2 transition-colors duration-200"

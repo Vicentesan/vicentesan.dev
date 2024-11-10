@@ -96,7 +96,7 @@ export function Hero({
               key={label}
               asChild
               variant="outline"
-              className="xs:w-28 group w-full text-zinc-800 dark:text-zinc-400"
+              className="group w-full text-zinc-800 dark:text-zinc-400 xs:w-28"
             >
               <Link
                 href={label !== 'Email' ? href : 'mailto:hello@vicentesan.dev'}
