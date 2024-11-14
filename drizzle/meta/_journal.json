@@ -15,6 +15,13 @@
       "when": 1731024884674,
       "tag": "20241108001444_add-details-to-quote",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1731617778700,
+      "tag": "20241114205618_add_blog",
+      "breakpoints": true
     }
   ]
 }
