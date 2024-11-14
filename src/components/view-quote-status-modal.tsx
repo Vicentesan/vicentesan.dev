@@ -1,6 +1,5 @@
 'use client'
 
-import { getCookie } from 'cookies-next'
 import { Loader2, TriangleAlertIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -16,7 +15,6 @@ import {
 import { useLanguage } from '@/context/language'
 import { trpc } from '@/lib/trpc'
 
-import { AuthModal } from './auth-modal'
 import { Input } from './ui/input'
 
 interface ViewQuoteStatusModalProps {
@@ -30,7 +28,6 @@ export function ViewQuoteStatusModal({
   onClose,
   quoteId,
 }: ViewQuoteStatusModalProps) {
-  const [showAuthModal, setShowAuthModal] = useState(false)
   const [quoteDetails, setQuoteDetails] = useState<{
     id: string
     createdAt: string
@@ -44,17 +41,6 @@ export function ViewQuoteStatusModal({
     status: string
   } | null>(null)
 
-  const {
-    data: session,
-    isFetched,
-    refetch,
-  } = trpc.getSession.useQuery(
-    { token: getCookie('auth_token') as string },
-    {
-      retry: false,
-    },
-  )
-
   const [quoteCode, setQuoteCode] = useState('')
 
   useEffect(() => {
@@ -63,14 +49,16 @@ export function ViewQuoteStatusModal({
     }
   }, [quoteId])
 
-  useEffect(() => {
-    if (isFetched && !session?.user) {
-      setShowAuthModal(true)
-    }
-  }, [isFetched, session])
-
   const { mutate: markQuoteAsUrgent, isPending: isMarkingQuoteAsUrgent } =
     trpc.markQuoteAsUrgent.useMutation()
+
+  const {
+    data,
+    isFetched: isQuoteFetched,
+    refetch,
+  } = trpc.getQuoteById.useQuery({
+    id: quoteCode ?? quoteId,
+  })
 
   function markAsUrgent() {
     markQuoteAsUrgent({ id: quoteId ?? '' }, { onSuccess: () => refetch() })
@@ -79,11 +67,6 @@ export function ViewQuoteStatusModal({
   const { dictionary, language } = useLanguage()
 
   const router = useRouter()
-
-  const { data, isFetched: isQuoteFetched } = trpc.getQuoteById.useQuery({
-    clientId: session?.user?.id ?? '',
-    id: quoteCode ?? quoteId,
-  })
 
   useEffect(() => {
     if (isQuoteFetched && data && 'quote' in data) {
@@ -95,15 +78,6 @@ export function ViewQuoteStatusModal({
     const url = new URL(window.location.href)
     router.replace(url.pathname)
     onClose()
-  }
-
-  if ((!session?.user || !session.user.id) && (quoteId || quoteCode)) {
-    return (
-      <AuthModal
-        isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-      />
-    )
   }
 
   if (!quoteId || !quoteCode) {

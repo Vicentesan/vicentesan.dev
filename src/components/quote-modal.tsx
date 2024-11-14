@@ -126,7 +126,6 @@ export function QuoteModal({ isOpen, setIsOpen }: QuoteModalProps) {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     if (step === 1) {
       try {
-        // Submit form logic here
         await createAsyncQuote({
           ...values,
           details: values.projectDetails,
@@ -154,10 +153,8 @@ export function QuoteModal({ isOpen, setIsOpen }: QuoteModalProps) {
   )
 
   const formatPhoneNumber = (value: string) => {
-    // Remove all non-numeric characters
     const numbers = value.replace(/\D/g, '')
 
-    // Format the number as (XX) XXXXX-XXXX
     if (numbers.length <= 2) return numbers
     if (numbers.length <= 7)
       return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`
