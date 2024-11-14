@@ -1,12 +1,10 @@
 'use client'
 
-import { getCookie } from 'cookies-next'
 import { motion } from 'framer-motion'
 import { Loader2 } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { AuthModal } from '@/components/auth-modal'
 import { QuoteModal } from '@/components/quote-modal'
 import {
   Accordion,
@@ -22,6 +20,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 import { ViewQuoteStatusModal } from '@/components/view-quote-status-modal'
 import { useLanguage } from '@/context/language'
 import { trpc } from '@/lib/trpc'
@@ -32,23 +31,17 @@ export default function AllQuotesPage() {
   const searchParams = useSearchParams()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const [showAuthModal, setShowAuthModal] = useState(false)
   const [showQuoteModal, setShowQuoteModal] = useState(false)
 
   const quoteId = searchParams.get('quoteId')
 
-  const { data: session, isFetched } = trpc.getSession.useQuery(
-    { token: getCookie('auth_token') as string },
-    {
-      retry: false,
-    },
-  )
+  const [email, setEmail] = useState('')
 
   const { data: quotesData, isLoading: isLoadingQuotes } =
     trpc.getQuotes.useQuery(
-      { clientId: session?.user?.id ?? '' },
+      { email },
       {
-        enabled: !!session?.user?.id,
+        enabled: !!email,
       },
     )
 
@@ -85,7 +78,7 @@ export default function AllQuotesPage() {
     )
   }
 
-  if (!quotesData?.quotes.length) {
+  if (quotesData && !('quotes' in quotesData)) {
     return (
       <>
         <motion.div
@@ -120,14 +113,14 @@ export default function AllQuotesPage() {
                   Create Your First Quote
                 </Button>
 
-                {isFetched && !session?.user && (
-                  <Button
-                    variant="outline"
-                    onClick={() => setShowAuthModal(true)}
-                  >
-                    Authenticate
-                  </Button>
-                )}
+                <div className="flex items-center gap-2">
+                  <Input
+                    placeholder="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <Button>Find my quotes</Button>
+                </div>
               </motion.div>
             </CardContent>
           </Card>
@@ -136,12 +129,6 @@ export default function AllQuotesPage() {
         <QuoteModal
           isOpen={showQuoteModal}
           setIsOpen={() => setShowQuoteModal(false)}
-        />
-
-        <AuthModal
-          isOpen={showAuthModal}
-          onClose={() => setShowAuthModal(false)}
-          redirectTo={`/${language}/quotes`}
         />
       </>
     )
@@ -280,10 +267,6 @@ export default function AllQuotesPage() {
         </Accordion>
       </div>
 
-      <AuthModal
-        isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-      />
       <ViewQuoteStatusModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}

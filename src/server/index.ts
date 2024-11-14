@@ -1,16 +1,10 @@
-import { createId } from '@paralleldrive/cuid2'
-import { TRPCError } from '@trpc/server'
 import { createHTTPServer } from '@trpc/server/adapters/standalone'
-import dayjs from 'dayjs'
 import { and, eq, or } from 'drizzle-orm'
-import * as jose from 'jose'
 import { z } from 'zod'
 
 import { db } from '@/db'
-import { authLinks, clients, quotes } from '@/db/schemas'
-import { env } from '@/env.mjs'
+import { clients, quotes } from '@/db/schemas'
 import { resend } from '@/resend'
-import { AuthenticationMagicLinkTemplate } from '@/resend/templates/magic-link'
 import { QuoteCreatedTemplate } from '@/resend/templates/quote-created'
 
 import { publicProcedure, router } from './trpc'
@@ -28,114 +22,28 @@ const quoteFormSchema = z.object({
 })
 
 export const appRouter = router({
-  requestMagicLink: publicProcedure
-    .input(
-      z.object({
-        email: z.string().email(),
-        redirectTo: z.string().optional(),
-      }),
-    )
-    .mutation(async ({ input }) => {
-      const userFromEmail = await db.query.clients.findFirst({
+  getQuotes: publicProcedure
+    .input(z.object({ email: z.string().email() }))
+    .query(async ({ input }) => {
+      const client = await db.query.clients.findFirst({
         where: eq(clients.email, input.email.toLocaleLowerCase()),
       })
 
-      if (!userFromEmail) return
-
-      const [authLink] = await db
-        .insert(authLinks)
-        .values({
-          code: createId(),
-          clientId: userFromEmail.id,
-        })
-        .returning()
-
-      const authLinkUrl = new URL(
-        '/auth-links/authenticate',
-        env.NEXT_PUBLIC_API_BASE_URL,
-      )
-
-      authLinkUrl.searchParams.set('code', authLink.code)
-      authLinkUrl.searchParams.set(
-        'redirect',
-        input.redirectTo || env.NEXT_PUBLIC_BASE_URL,
-      )
-
-      const { error, data } = await resend.emails.send({
-        from: 'Vicente Sanchez <hello@vicentesan.dev>',
-        to: input.email.toLocaleLowerCase(),
-        subject: 'Login link',
-        react: AuthenticationMagicLinkTemplate({
-          authLink: authLinkUrl.toString(),
-          userEmail: input.email.toLocaleLowerCase(),
-          userName: userFromEmail.name,
-        }),
-      })
-
-      console.log('data', data)
-      console.log('error', error)
-
-      if (error) {
-        throw new Error(error.message)
+      if (!client) {
+        return { success: false, message: 'Client not found' }
       }
 
-      return {
-        success: true,
-      }
-    }),
-  authenticateFromMagicLink: publicProcedure
-    .input(z.object({ code: z.string() }))
-    .mutation(async ({ input }) => {
-      const authLinkFromCode = await db.query.authLinks.findFirst({
-        where: eq(authLinks.code, input.code),
-      })
-
-      if (!authLinkFromCode) {
-        throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'Invalid code',
-        })
-      }
-
-      const daysSinceAuthLinkWasCreated = dayjs().diff(
-        authLinkFromCode.createdAt,
-        'days',
-      )
-
-      if (daysSinceAuthLinkWasCreated > 7) {
-        return {
-          success: false,
-          message: 'AuthLink has expired, please generate a new one.',
-        }
-      }
-
-      const jwt = await new jose.SignJWT({ sub: authLinkFromCode.clientId })
-        .setProtectedHeader({ alg: 'HS256' })
-        .setIssuedAt()
-        .setExpirationTime('7d')
-        .sign(new TextEncoder().encode(env.JWT_SECRET))
-
-      await db.delete(authLinks).where(eq(authLinks.id, authLinkFromCode.id))
-
-      return { success: true, token: jwt }
-    }),
-  getQuotes: publicProcedure
-    .input(z.object({ clientId: z.string() }))
-    .query(async ({ input }) => {
       const quotesFromClient = await db.query.quotes.findMany({
-        where: eq(quotes.clientId, input.clientId),
+        where: eq(quotes.clientId, client.id),
       })
 
       return { success: true, quotes: quotesFromClient }
     }),
   getQuoteById: publicProcedure
-    .input(z.object({ id: z.string(), clientId: z.string() }))
+    .input(z.object({ id: z.string() }))
     .query(async ({ input }) => {
       const quote = await db.query.quotes.findFirst({
-        where: and(
-          eq(quotes.id, input.id),
-          eq(quotes.clientId, input.clientId),
-        ),
+        where: and(eq(quotes.id, input.id)),
       })
 
       if (!quote) {
@@ -198,52 +106,6 @@ export const appRouter = router({
 
       return {
         quoteId: quote.id,
-      }
-    }),
-  getSession: publicProcedure
-    .input(z.object({ token: z.string().optional() }))
-    .query(async ({ input }) => {
-      try {
-        const token = input.token
-
-        if (!token) {
-          console.log('No token provided')
-          return { user: null }
-        }
-
-        try {
-          const { payload } = await jose.jwtVerify(
-            token,
-            new TextEncoder().encode(env.JWT_SECRET),
-          )
-
-          if (!payload.sub) {
-            console.log('No sub in payload')
-            return { user: null }
-          }
-
-          const user = await db.query.clients.findFirst({
-            where: eq(clients.id, payload.sub),
-            columns: {
-              id: true,
-              name: true,
-              email: true,
-            },
-          })
-
-          if (!user) {
-            console.log('No user found')
-            return { user: null }
-          }
-
-          return { user }
-        } catch (error) {
-          console.error('Token verification failed:', error)
-          return { user: null }
-        }
-      } catch (error) {
-        console.error('Session error:', error)
-        return { user: null }
       }
     }),
   markQuoteAsUrgent: publicProcedure
