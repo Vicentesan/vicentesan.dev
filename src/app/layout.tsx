@@ -45,7 +45,7 @@ export default async function RootLayout({
       <head>
         <meta name="theme-color" content="#09090b" />
       </head>
-      <body className="m-10 overflow-x-hidden font-mono antialiased lg:overflow-hidden">
+      <body className="m-10 overflow-x-hidden font-mono antialiased lg:overflow-x-hidden">
         <Pattern variant="checkered" />
         {children}
       </body>

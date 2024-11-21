@@ -17,8 +17,8 @@ export default function Home() {
   const quoteId = searchParams.get('quoteId') ?? undefined
   return (
     <>
-      <div className="min-h-screen text-zinc-100 selection:bg-purple-500/20 selection:text-purple-200">
-        <div className="container mx-auto px-4 py-32">
+      <div className="min-h-[calc(100dvh-15rem)] text-zinc-100 selection:bg-purple-500/20 selection:text-purple-200">
+        <div className="container mx-auto px-4 pt-32">
           <div className="mx-auto max-w-5xl space-y-24">
             <Hero
               setIsQuoteModalOpen={setIsQuoteModalOpen}
