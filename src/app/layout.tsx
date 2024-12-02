@@ -19,10 +19,38 @@ const geistMono = localFont({
   weight: '100 900',
 })
 
-export const metadata: Metadata = {
-  title: 'Vicente Sanchez',
-  description: 'Obsessed with building products that help people',
-}
+const metadataTitle = 'Vicente Sanchez'
+const metadataDescription = 'Obsessed with building products that help people'
+const metadataImage = '/vicentesan.jpg'
+
+export const metadata = {
+  title: metadataTitle,
+  description: metadataDescription,
+  openGraph: {
+    title: metadataTitle,
+    description: metadataDescription,
+    images: [
+      {
+        url: metadataImage,
+      },
+    ],
+  },
+  twitter: {
+    title: metadataTitle,
+    description: metadataDescription,
+    images: [
+      {
+        url: metadataImage,
+      },
+    ],
+    card: 'summary_large_image',
+    creator: '@vicentesandev',
+  },
+  robots: {
+    index: true,
+    follow: false,
+  },
+} satisfies Metadata
 
 interface RootLayoutProps {
   children: React.ReactNode
