@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import { Footer } from '@/components/footer'
 import { Toaster } from '@/components/ui/sonner'
 import { AppWrapper } from '@/context/app'
 import { LanguageContextProvider } from '@/context/language'
@@ -75,6 +76,7 @@ export default async function RootLayout({
         <main className="flex min-h-screen w-full flex-col gap-16">
           <Toaster richColors position="top-right" closeButton />
           {children}
+          <Footer />
         </main>
       </LanguageContextProvider>
     </AppWrapper>
