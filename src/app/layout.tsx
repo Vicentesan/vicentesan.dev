@@ -1,23 +1,8 @@
 import './globals.css'
 
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
 
-import { Pattern } from '@/components/pattern'
-import { cn } from '@/lib/utils'
 import type { Language } from '@/types/languages'
-
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-})
-
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-})
 
 const metadataTitle = 'Vicente Sanchez'
 const metadataDescription = 'Obsessed with building products that help people'
@@ -65,16 +50,11 @@ export default async function RootLayout({
   const lang = resolvedParams.lang as Language
 
   return (
-    <html
-      lang={lang}
-      suppressHydrationWarning
-      className={cn(geistSans.variable, geistMono.variable)}
-    >
+    <html lang={lang} suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#09090b" />
       </head>
-      <body className="m-10 overflow-x-hidden font-mono antialiased lg:overflow-x-hidden">
-        <Pattern variant="checkered" />
+      <body className="mx-auto my-12 flex max-w-3xl items-center justify-start bg-background">
         {children}
       </body>
     </html>

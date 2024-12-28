@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 
-import { LangSwitcher } from '@/components/lang-switcher'
-import { ThemeToggle } from '@/components/theme/theme-toggle'
 import { Toaster } from '@/components/ui/sonner'
 import { AppWrapper } from '@/context/app'
 import { LanguageContextProvider } from '@/context/language'
@@ -74,15 +72,8 @@ export default async function RootLayout({
   return (
     <AppWrapper>
       <LanguageContextProvider language={lang} dictionary={dictionary}>
-        <main className="w-full">
-          <header className="fixed left-0 right-0 top-0 z-50 flex items-center justify-end gap-4 bg-transparent p-6">
-            <LangSwitcher />
-
-            <span className="h-6 w-px bg-muted" />
-
-            <ThemeToggle />
-            <Toaster richColors position="top-right" closeButton />
-          </header>
+        <main className="flex min-h-screen w-full flex-col gap-16">
+          <Toaster richColors position="top-right" closeButton />
           {children}
         </main>
       </LanguageContextProvider>
