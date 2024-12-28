@@ -59,6 +59,32 @@ export default function Home() {
           that reflect my values.
         </p>
       </div>
+
+      <div className="flex flex-col gap-6 md:gap-10">
+        <div className="flex flex-row items-center justify-center gap-2">
+          <span className="text-base font-medium text-muted-foreground md:text-lg">
+            Writing
+          </span>
+          <span className="h-px w-full bg-muted-foreground" />
+        </div>
+
+        <ul className="flex flex-col items-start justify-start gap-4 md:gap-6">
+          <li className="flex w-full flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-1 flex-row items-center gap-2 whitespace-normal sm:whitespace-nowrap">
+              <span className="md:text-md font-sans text-sm text-foreground">
+                Designing a Portfolio That Reflects My Principles
+              </span>
+            </div>
+
+            <div className="flex w-full items-center gap-2">
+              <span className="h-px w-full border-b border-dashed border-muted-foreground" />
+              <span className="font-mono text-xs text-muted-foreground md:text-sm">
+                03.21.2024
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   )
 }
