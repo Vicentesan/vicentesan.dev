@@ -3,7 +3,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 
 import { Footer } from '@/components/footer'
-import { Toaster } from '@/components/ui/sonner'
 import { AppWrapper } from '@/context/app'
 
 const metadataTitle = 'Vicente Sanchez'
@@ -52,7 +51,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className="bg-background mx-auto my-12 flex max-w-3xl items-center justify-start">
         <AppWrapper>
           <main className="flex min-h-screen w-full flex-col gap-20">
-            <Toaster richColors position="top-right" closeButton />
             {children}
             <Footer />
           </main>
