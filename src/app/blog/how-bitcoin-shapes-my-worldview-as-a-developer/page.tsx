@@ -1,3 +1,41 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'How Bitcoin Shapes My Worldview as a Developer',
+  description:
+    'My perspective on how Bitcoin has influenced my approach to software development and my values as a developer.',
+  authors: [
+    {
+      name: 'Vicente Sanchez',
+      url: 'https://vicentesan.dev',
+    },
+  ],
+  openGraph: {
+    title: 'How Bitcoin Shapes My Worldview as a Developer',
+    description:
+      'My perspective on how Bitcoin has influenced my approach to software development and my values as a developer.',
+    url: 'https://vicentesan.dev/blog/how-bitcoin-shapes-my-worldview-as-a-developer',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'How Bitcoin Shapes My Worldview as a Developer',
+    description:
+      'My perspective on how Bitcoin has influenced my approach to software development and my values as a developer.',
+    creator: '@vicentesan.dev',
+  },
+  keywords: [
+    'bitcoin',
+    'software development',
+    'decentralization',
+    'open source',
+    'privacy',
+    'security',
+    'financial sovereignty',
+    'developer philosophy',
+  ],
+}
+
 export default function Page() {
   return (
     <div className="-mb-24 flex w-full flex-col gap-16">

@@ -1,4 +1,41 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Why I Chose Open Source for My Career',
+  description:
+    "My journey into open source development, the benefits I've found, and why I believe it's the future of software.",
+  authors: [
+    {
+      name: 'Vicente Sanchez',
+      url: 'https://vicentesan.dev',
+    },
+  ],
+  openGraph: {
+    title: 'Why I Chose Open Source for My Career',
+    description:
+      "My journey into open source development, the benefits I've found, and why I believe it's the future of software.",
+    url: 'https://vicentesan.dev/blog/why-i-choose-open-source-for-my-career',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Why I Chose Open Source for My Career',
+    description:
+      "My journey into open source development, the benefits I've found, and why I believe it's the future of software.",
+    creator: '@vicentesan.dev',
+  },
+  keywords: [
+    'open source',
+    'software development',
+    'career',
+    'collaboration',
+    'transparency',
+    'community',
+    'bitcoin',
+    'developer journey',
+  ],
+}
 
 export default function Page() {
   return (

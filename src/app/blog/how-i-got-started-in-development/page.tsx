@@ -1,3 +1,41 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'How I Got Started in Development',
+  description:
+    'My journey into software development, starting with Discord bots during the COVID-19 lockdown at age 10.',
+  authors: [
+    {
+      name: 'Vicente Sanchez',
+      url: 'https://vicentesan.dev',
+    },
+  ],
+  openGraph: {
+    title: 'How I Got Started in Development',
+    description:
+      'My journey into software development, starting with Discord bots during the COVID-19 lockdown at age 10.',
+    url: 'https://vicentesan.dev/blog/how-i-got-started-in-development',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'How I Got Started in Development',
+    description:
+      'My journey into software development, starting with Discord bots during the COVID-19 lockdown at age 10.',
+    creator: '@vicentesan.dev',
+  },
+  keywords: [
+    'software development',
+    'discord bots',
+    'coding journey',
+    'beginner programming',
+    'FiveM',
+    'COVID-19 lockdown',
+    'developer story',
+    'learning to code',
+  ],
+}
+
 export default function Page() {
   return (
     <div className="-mb-24 flex w-full flex-col gap-16">

@@ -5,19 +5,39 @@ import type { Metadata } from 'next'
 import { Footer } from '@/components/footer'
 import { AppWrapper } from '@/context/app'
 
-const metadataTitle = 'Vicente Sanchez'
-const metadataDescription = 'Obsessed with building products that help people'
+const metadataTitle = 'Vicente Sanchez | Full Stack Developer'
+const metadataDescription =
+  'Full Stack Developer passionate about minimalism, open-source, and Bitcoin. Building innovative products that help people.'
 const metadataImage = '/vicentesan.jpg'
+const metadataUrl = 'https://vicentesan.dev'
 
 export const metadata = {
-  title: metadataTitle,
+  title: {
+    default: metadataTitle,
+    template: '%s | Vicente Sanchez',
+  },
   description: metadataDescription,
+  metadataBase: new URL(metadataUrl),
+  authors: [
+    {
+      name: 'Vicente Sanchez',
+      url: metadataUrl,
+    },
+  ],
+  creator: 'Vicente Sanchez',
   openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: metadataUrl,
     title: metadataTitle,
     description: metadataDescription,
+    siteName: 'Vicente Sanchez',
     images: [
       {
         url: metadataImage,
+        width: 1200,
+        height: 630,
+        alt: 'Vicente Sanchez',
       },
     ],
   },
@@ -27,15 +47,36 @@ export const metadata = {
     images: [
       {
         url: metadataImage,
+        alt: 'Vicente Sanchez',
       },
     ],
     card: 'summary_large_image',
     creator: '@vicentesandev',
+    site: '@vicentesandev',
   },
   robots: {
     index: true,
-    follow: false,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
+  keywords: [
+    'Vicente Sanchez',
+    'Full Stack Developer',
+    'Web Development',
+    'Bitcoin',
+    'Open Source',
+    'Minimalism',
+    'Software Engineer',
+    'Brazil',
+  ],
+  viewport: 'width=device-width, initial-scale=1',
+  themeColor: '#09090b',
+  category: 'technology',
 } satisfies Metadata
 
 interface RootLayoutProps {
@@ -44,7 +85,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html suppressHydrationWarning>
+    <html suppressHydrationWarning lang="en">
       <head>
         <meta name="theme-color" content="#09090b" />
       </head>
