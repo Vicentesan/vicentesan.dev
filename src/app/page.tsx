@@ -121,15 +121,18 @@ export default function Home() {
                     : 'none',
               }}
             >
-              <Link href={`/blog/${post.slug}`} className="flex w-full gap-2">
-                <div className="flex w-full flex-1 flex-row items-center gap-2 whitespace-normal sm:whitespace-nowrap">
-                  <span className="md:text-md text-foreground font-sans text-sm">
+              <Link
+                href={`/blog/${post.slug}`}
+                className="flex w-full flex-col gap-2 sm:flex-row"
+              >
+                <div className="flex flex-1 flex-row items-center gap-2 whitespace-normal">
+                  <span className="text-foreground font-sans text-sm md:text-base">
                     {post.title}
                   </span>
                 </div>
 
-                <div className="flex w-full items-center gap-2">
-                  <span className="border-muted-foreground h-px w-full border-b border-dashed" />
+                <div className="mt-1 flex items-center gap-2 sm:mt-0">
+                  <span className="border-muted-foreground hidden h-px w-16 border-b border-dashed sm:block sm:w-full" />
 
                   <span className="text-muted-foreground font-mono text-xs md:text-sm">
                     {formatItemDate({
