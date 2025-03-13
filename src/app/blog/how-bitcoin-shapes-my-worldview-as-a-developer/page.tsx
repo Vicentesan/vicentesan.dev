@@ -38,13 +38,13 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="-mb-24 flex w-full flex-col gap-16">
-      <h1 className="text-4xl font-bold">
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 sm:gap-8 sm:px-6 md:gap-16 md:px-8">
+      <h1 className="mt-6 text-2xl font-bold sm:mt-8 sm:text-3xl md:mt-10 md:text-4xl">
         How Bitcoin Shapes My Worldview as a Developer
       </h1>
 
-      <div className="flex flex-col gap-4">
-        <p className="text-muted-foreground text-lg">
+      <div className="flex flex-col gap-3 md:gap-4">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           Like many, my first impression of Bitcoin was… skeptical. "Ponzi
           scheme" probably crossed my mind. But something kept me digging. I
           started <span className="text-foreground">researching</span>,
@@ -54,7 +54,7 @@ export default function Page() {
           <span className="text-foreground">fiat days are numbered</span>.
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           Bitcoin isn't just an investment for me. It's a{' '}
           <span className="text-foreground">paradigm shift</span>. It embodies
           values I deeply believe in:{' '}
@@ -72,15 +72,15 @@ export default function Page() {
           <span className="text-foreground">POWERFUL</span>.
         </p>
 
-        <div className="flex flex-col gap-4">
-          <p className="text-muted-foreground text-lg">
+        <div className="flex flex-col gap-3 md:gap-4">
+          <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
             This philosophy{' '}
             <span className="text-foreground">profoundly impacts</span> my
             approach to software development. I now{' '}
             <span className="text-foreground">prioritize</span>:
           </p>
 
-          <ul className="text-muted-foreground list-disc pl-4">
+          <ul className="text-muted-foreground list-disc pl-4 text-sm sm:text-base md:text-lg">
             <li>
               <span className="text-foreground font-bold">Security: </span>
               <span className="text-foreground">
@@ -105,7 +105,7 @@ export default function Page() {
           </ul>
         </div>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           I haven't yet built anything directly Bitcoin-related (
           <span className="text-foreground">yet!</span>), but I'm
           <span className="text-foreground"> brewing some ideas</span>.{' '}
@@ -114,7 +114,7 @@ export default function Page() {
           <span className="text-foreground">possibilities are endless</span>.
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           I{' '}
           <span className="text-foreground">
             firmly believe Bitcoin is the future
@@ -126,7 +126,7 @@ export default function Page() {
           offer promising avenues for improvement.
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           Ultimately, Bitcoin{' '}
           <span className="text-foreground">empowers individuals</span>, fosters{' '}
           <span className="text-foreground">decentralized systems</span>, and
@@ -143,7 +143,7 @@ export default function Page() {
           .
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground pb-6 text-sm sm:pb-8 sm:text-base md:pb-12 md:text-lg">
           My advice to other developers interested in exploring Bitcoin?{' '}
           <span className="text-foreground">Not your keys, not your coins</span>
           . <span className="text-foreground">Don't trust, verify</span>.{' '}

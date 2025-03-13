@@ -39,13 +39,13 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="-mb-24 flex w-full flex-col gap-16">
-      <h1 className="text-4xl font-bold">
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 sm:gap-8 sm:px-6 md:gap-16 md:px-8">
+      <h1 className="mt-6 text-2xl font-bold sm:mt-8 sm:text-3xl md:mt-10 md:text-4xl">
         Why i chose Open Source for my career{' '}
       </h1>
 
-      <div className="flex flex-col gap-4">
-        <p className="text-muted-foreground text-lg">
+      <div className="flex flex-col gap-3 md:gap-4">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           my journey into the world of software started, like many, with using
           software. <span className="text-foreground">bitcoin</span>, obviously.
           then there was <span className="text-foreground">AnyType</span>,{' '}
@@ -62,7 +62,7 @@ export default function Page() {
           .
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           open source isn't just about free software; it's about a{' '}
           <span className="text-foreground">philosophy</span>. it's about{' '}
           <span className="text-foreground">collaboration</span>,{' '}
@@ -76,13 +76,13 @@ export default function Page() {
           something truly powerful.
         </p>
 
-        <div className="flex flex-col gap-4">
-          <p className="text-muted-foreground text-lg">
+        <div className="flex flex-col gap-3 md:gap-4">
+          <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
             the benefits of contributing to open source are immense. for me,
             it's about:
           </p>
 
-          <ul className="text-muted-foreground list-disc pl-4 text-lg">
+          <ul className="text-muted-foreground list-disc pl-4 text-sm sm:text-base md:text-lg">
             <li>
               <span className="text-foreground font-bold">
                 skill development:{' '}
@@ -123,7 +123,7 @@ export default function Page() {
           </ul>
         </div>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           it's not always easy. coordinating with other developers, navigating
           different coding styles and codebases… it can be{' '}
           <span className="text-foreground">challenging</span>. but the
@@ -131,7 +131,7 @@ export default function Page() {
           difficulties.
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           i'm drawn to open source projects across the spectrum:{' '}
           <span className="text-foreground">frameworks</span>,{' '}
           <span className="text-foreground">developer tools</span>,{' '}
@@ -142,7 +142,7 @@ export default function Page() {
           game.
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           i know it's early (i'm only{' '}
           <span className="text-foreground">15</span>), but one thing i'm{' '}
           <span className="text-foreground">sure about</span> is that i{' '}
@@ -151,7 +151,7 @@ export default function Page() {
           <span className="text-foreground">know it can be a career</span>.
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           i believe the{' '}
           <span className="text-foreground">future belongs to open source</span>
           . in a world increasingly concerned with{' '}
@@ -162,7 +162,7 @@ export default function Page() {
           <span className="text-foreground"> open, auditable code</span>.
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground pb-6 text-sm sm:pb-8 sm:text-base md:pb-12 md:text-lg">
           my advice to aspiring open source developers?{' '}
           <span className="text-foreground">
             find something you're passionate about

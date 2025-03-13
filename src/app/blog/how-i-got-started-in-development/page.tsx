@@ -38,11 +38,13 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="-mb-24 flex w-full flex-col gap-16">
-      <h1 className="text-4xl font-bold">How I Got Started in Development</h1>
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 sm:gap-8 sm:px-6 md:gap-16 md:px-8">
+      <h1 className="mt-6 text-2xl font-bold sm:mt-8 sm:text-3xl md:mt-10 md:text-4xl">
+        How I Got Started in Development
+      </h1>
 
-      <div className="flex flex-col gap-4">
-        <p className="text-muted-foreground text-lg">
+      <div className="flex flex-col gap-3 md:gap-4">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           March 2020. Brazil. Covid hits. I'm ten like most kids, i didn't grasp
           the gravity. School, friends, games – that was my world. When the
           government announced a{' '}
@@ -52,7 +54,7 @@ export default function Page() {
           <span className="text-foreground">More Fortnite?</span> SIGN. ME. UP.
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           That "vacation" stretched from days to weeks to…{' '}
           <span className="text-foreground">forever</span>. Suddenly, being
           stuck inside wasn't so fun. BUT, a surprising thing happened:{' '}
@@ -69,7 +71,7 @@ export default function Page() {
           .
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           Then, FiveM sparked my curiosity. Every server had similar Discord
           bots for whitelisting and permissions.{' '}
           <span className="text-foreground">"How do they MAKE these?"</span> I
@@ -81,7 +83,7 @@ export default function Page() {
           <span className="text-foreground">it all began</span>.
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           My first bot? A basic whitelist tool. Clunky, buggy, limited… but{' '}
           <span className="text-foreground">MINE</span>. Seeing it work, even in
           its rough state, was an{' '}
@@ -92,7 +94,7 @@ export default function Page() {
           <span className="text-foreground">diving deeper</span>.
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           A few weeks later, a FiveM server I frequented{' '}
           <span className="text-foreground">needed a dev</span>. Without
           hesitation, I messaged the admin:{' '}
@@ -103,7 +105,7 @@ export default function Page() {
           <span className="text-foreground">they "hired" me!</span>
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           No pay, but{' '}
           <span className="text-foreground">admin powers and tasks</span>{' '}
           awaited. My first{' '}
@@ -122,7 +124,7 @@ export default function Page() {
           .
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           It wasn't easy, but finishing that bot was{' '}
           <span className="text-foreground">exhilarating</span>. It was my{' '}
           <span className="text-foreground">first major dev challenge</span>.
@@ -137,7 +139,7 @@ export default function Page() {
           …
         </p>
 
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground pb-6 text-sm sm:pb-8 sm:text-base md:pb-12 md:text-lg">
           And that was just the{' '}
           <span className="text-foreground">
             beginning of my development journey
