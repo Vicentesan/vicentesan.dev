@@ -2,6 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { usePathname, useRouter } from 'next/navigation'
+import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader'
 import * as NProgress from 'nprogress'
 import { ReactNode, useEffect, useState } from 'react'
@@ -22,8 +23,15 @@ export const AppWrapper = ({ children }: AppWrapperProps) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NextTopLoader color="#ccc" showSpinner={false} />
-      {children}
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <NextTopLoader color="#ccc" showSpinner={false} />
+        {children}
+      </ThemeProvider>
     </QueryClientProvider>
   )
 }

@@ -2,7 +2,9 @@ import './globals.css'
 
 import type { Metadata } from 'next'
 
-import type { Language } from '@/types/languages'
+import { Footer } from '@/components/footer'
+import { Toaster } from '@/components/ui/sonner'
+import { AppWrapper } from '@/context/app'
 
 const metadataTitle = 'Vicente Sanchez'
 const metadataDescription = 'Obsessed with building products that help people'
@@ -39,23 +41,22 @@ export const metadata = {
 
 interface RootLayoutProps {
   children: React.ReactNode
-  params: Promise<{ lang: string }>
 }
 
-export default async function RootLayout({
-  children,
-  params,
-}: RootLayoutProps) {
-  const resolvedParams = await params
-  const lang = resolvedParams.lang as Language
-
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#09090b" />
       </head>
-      <body className="mx-auto my-12 flex max-w-3xl items-center justify-start bg-background">
-        {children}
+      <body className="bg-background mx-auto my-12 flex max-w-3xl items-center justify-start">
+        <AppWrapper>
+          <main className="flex min-h-screen w-full flex-col gap-20">
+            <Toaster richColors position="top-right" closeButton />
+            {children}
+            <Footer />
+          </main>
+        </AppWrapper>
       </body>
     </html>
   )
