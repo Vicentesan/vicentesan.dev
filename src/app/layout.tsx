@@ -1,6 +1,6 @@
 import './globals.css'
 
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 import { Footer } from '@/components/footer'
 import { AppWrapper } from '@/context/app'
@@ -10,6 +10,12 @@ const metadataDescription =
   'Full Stack Developer passionate about minimalism, open-source, and Bitcoin. Building innovative products that help people.'
 const metadataImage = '/vicentesan.jpg'
 const metadataUrl = 'https://vicentesan.dev'
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#09090b',
+}
 
 export const metadata = {
   title: {
@@ -74,8 +80,6 @@ export const metadata = {
     'Software Engineer',
     'Brazil',
   ],
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#09090b',
   category: 'technology',
 } satisfies Metadata
 
@@ -86,9 +90,6 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head>
-        <meta name="theme-color" content="#09090b" />
-      </head>
       <body className="bg-background mx-auto my-12 flex max-w-3xl items-center justify-start">
         <AppWrapper>
           <main className="flex min-h-screen w-full flex-col gap-20">
