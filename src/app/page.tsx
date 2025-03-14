@@ -25,10 +25,10 @@ export default function Home() {
 
         <div className="relative h-48 w-full sm:h-56 md:h-64">
           <Image
-            src="/vicente-san.png"
+            src="/vicente-san-grayscale.png"
             alt="Vicente Sanchez"
             fill
-            className="rounded-md object-cover grayscale"
+            className="rounded-md object-cover"
           />
         </div>
 

@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     type: 'article',
     images: [
       {
-        url: '/favicon-96x96.png',
-        width: 96,
-        height: 96,
+        url: '/vicente-san-grayscale.png',
+        width: 400,
+        height: 400,
         alt: 'Vicente Sanchez',
       },
     ],
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     creator: '@vicentesan.dev',
     images: [
       {
-        url: '/favicon-96x96.png',
+        url: '/vicente-san-grayscale.png',
         alt: 'Vicente Sanchez',
       },
     ],
