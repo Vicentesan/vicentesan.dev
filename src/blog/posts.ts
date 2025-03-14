@@ -4,12 +4,12 @@ export const posts = [
     title: 'Why i choose Open Source for my career',
     slug: 'why-i-choose-open-source-for-my-career',
     date: '2025-03-15',
-  },
+  }, */
   {
     title: 'How bitcoin shapes my worldview as a developer',
     slug: 'how-bitcoin-shapes-my-worldview-as-a-developer',
     date: '2025-03-14',
-  }, */
+  },
   {
     title: 'How I got started in development',
     slug: 'how-i-got-started-in-development',
