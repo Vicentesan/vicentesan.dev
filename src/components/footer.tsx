@@ -20,6 +20,16 @@ export function Footer() {
         <span className="text-sm sm:text-base">::</span>
         <div>
           <Link
+            href="https://github.com/vicentesan"
+            target="_blank"
+            className="text-sm text-neutral-50 underline underline-offset-4 sm:text-base"
+          >
+            Github
+          </Link>
+        </div>
+        <span className="text-sm sm:text-base">::</span>
+        <div>
+          <Link
             href="https://x.com/vicentesan"
             target="_blank"
             className="text-sm text-neutral-50 underline underline-offset-4 sm:text-base"
