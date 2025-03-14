@@ -17,6 +17,14 @@ export const metadata: Metadata = {
       "My journey into open source development, the benefits I've found, and why I believe it's the future of software.",
     url: 'https://vicentesan.dev/blog/why-i-choose-open-source-for-my-career',
     type: 'article',
+    images: [
+      {
+        url: '/favicon-96x96.png',
+        width: 96,
+        height: 96,
+        alt: 'Vicente Sanchez',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -24,6 +32,12 @@ export const metadata: Metadata = {
     description:
       "My journey into open source development, the benefits I've found, and why I believe it's the future of software.",
     creator: '@vicentesan.dev',
+    images: [
+      {
+        url: '/favicon-96x96.png',
+        alt: 'Vicente Sanchez',
+      },
+    ],
   },
   keywords: [
     'open source',

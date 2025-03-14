@@ -8,7 +8,7 @@ import { AppWrapper } from '@/context/app'
 const metadataTitle = 'Vicente Sanchez | Full Stack Developer'
 const metadataDescription =
   'Full Stack Developer passionate about minimalism, open-source, and Bitcoin. Building innovative products that help people.'
-const metadataImage = '/vicentesan.jpg'
+const metadataImage = '/favicon-96x96.png'
 const metadataUrl = 'https://vicentesan.dev'
 
 export const viewport: Viewport = {
@@ -41,8 +41,8 @@ export const metadata = {
     images: [
       {
         url: metadataImage,
-        width: 1200,
-        height: 630,
+        width: 96,
+        height: 96,
         alt: 'Vicente Sanchez',
       },
     ],
@@ -81,6 +81,11 @@ export const metadata = {
     'Brazil',
   ],
   category: 'technology',
+  icons: {
+    icon: metadataImage,
+    shortcut: metadataImage,
+    apple: '/apple-touch-icon.png',
+  },
 } satisfies Metadata
 
 interface RootLayoutProps {

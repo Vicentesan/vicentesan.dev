@@ -16,6 +16,14 @@ export const metadata: Metadata = {
       'My perspective on how Bitcoin has influenced my approach to software development and my values as a developer.',
     url: 'https://vicentesan.dev/blog/how-bitcoin-shapes-my-worldview-as-a-developer',
     type: 'article',
+    images: [
+      {
+        url: '/favicon-96x96.png',
+        width: 96,
+        height: 96,
+        alt: 'Vicente Sanchez',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -23,6 +31,12 @@ export const metadata: Metadata = {
     description:
       'My perspective on how Bitcoin has influenced my approach to software development and my values as a developer.',
     creator: '@vicentesan.dev',
+    images: [
+      {
+        url: '/favicon-96x96.png',
+        alt: 'Vicente Sanchez',
+      },
+    ],
   },
   keywords: [
     'bitcoin',

@@ -16,6 +16,14 @@ export const metadata: Metadata = {
       'My journey into software development, starting with Discord bots during the COVID-19 lockdown at age 10.',
     url: 'https://vicentesan.dev/blog/how-i-got-started-in-development',
     type: 'article',
+    images: [
+      {
+        url: '/favicon-96x96.png',
+        width: 96,
+        height: 96,
+        alt: 'Vicente Sanchez',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -23,6 +31,12 @@ export const metadata: Metadata = {
     description:
       'My journey into software development, starting with Discord bots during the COVID-19 lockdown at age 10.',
     creator: '@vicentesan.dev',
+    images: [
+      {
+        url: '/favicon-96x96.png',
+        alt: 'Vicente Sanchez',
+      },
+    ],
   },
   keywords: [
     'software development',
