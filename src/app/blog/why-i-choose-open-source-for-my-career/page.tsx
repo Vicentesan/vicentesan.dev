@@ -55,7 +55,7 @@ export default function Page() {
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 sm:gap-8 sm:px-6 md:gap-16 md:px-8">
       <h1 className="mt-6 text-2xl font-bold sm:mt-8 sm:text-3xl md:mt-10 md:text-4xl">
-        Why i chose Open Source for my career{' '}
+        Why I chose Open Source for my career{' '}
       </h1>
 
       <div className="flex flex-col gap-3 md:gap-4">
@@ -65,10 +65,14 @@ export default function Page() {
           then there was <span className="text-foreground">AnyType</span>,{' '}
           <span className="text-foreground">NosTR</span>, various development
           libraries and frameworks… and then came{' '}
-          <Link href="https://plotiwst.app" target="_blank">
+          <Link
+            href="https://plotiwst.app"
+            target="_blank"
+            className="underline underline-offset-4"
+          >
             <span className="text-foreground">plotiwst.app</span>
           </Link>
-          . plot twist: that was my{' '}
+          . that was my{' '}
           <span className="text-foreground">
             first open source contribution
           </span>
