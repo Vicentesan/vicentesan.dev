@@ -70,7 +70,7 @@ export default function Page() {
             target="_blank"
             className="underline underline-offset-4"
           >
-            <span className="text-foreground">plotiwst.app</span>
+            <span className="text-foreground">plotwist.app</span>
           </Link>
           . that was my{' '}
           <span className="text-foreground">
