@@ -61,9 +61,9 @@ export default function Page() {
         <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
           Like many, my first impression of Bitcoin was… skeptical. "Ponzi
           scheme" probably crossed my mind. But something kept me digging. I
-          started <span className="text-foreground">researching</span>,
+          started <span className="text-foreground">researching</span>,{' '}
           <span className="text-foreground">questioning</span>, and eventually…
-          I<span className="text-foreground">fell down the rabbit hole</span>.
+          I <span className="text-foreground">fell down the rabbit hole</span>.
           Now? Let's just say my{' '}
           <span className="text-foreground">fiat days are numbered</span>.
         </p>
@@ -72,7 +72,7 @@ export default function Page() {
           Bitcoin isn't just an investment for me. It's a{' '}
           <span className="text-foreground">paradigm shift</span>. It embodies
           values I deeply believe in:{' '}
-          <span className="text-foreground">decentralization</span>,
+          <span className="text-foreground">decentralization</span>,{' '}
           <span className="text-foreground">censorship-resistance</span>, and,
           most importantly,{' '}
           <span className="text-foreground">financial sovereignty</span>. The
