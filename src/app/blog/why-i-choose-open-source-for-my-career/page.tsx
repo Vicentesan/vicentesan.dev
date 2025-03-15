@@ -66,7 +66,7 @@ export default function Page() {
           <span className="text-foreground">NosTR</span>, various development
           libraries and frameworks… and then came{' '}
           <Link
-            href="https://plotiwst.app"
+            href="https://plotwist.app"
             target="_blank"
             className="underline underline-offset-4"
           >
