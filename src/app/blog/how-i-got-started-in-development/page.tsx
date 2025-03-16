@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 
+import { BlogHeader } from '@/components/blog-header'
+
 export const metadata: Metadata = {
   title: 'How I Got Started in Development',
   description:
@@ -53,9 +55,11 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 sm:gap-8 sm:px-6 md:gap-16 md:px-8">
-      <h1 className="mt-6 text-2xl font-bold sm:mt-8 sm:text-3xl md:mt-10 md:text-4xl">
-        How I Got Started in Development
-      </h1>
+      <BlogHeader
+        title="How I Got Started in Development"
+        date="March 16, 2025"
+        slug="how-i-got-started-in-development"
+      />
 
       <div className="flex flex-col gap-3 md:gap-4">
         <p className="text-muted-foreground text-sm sm:text-base md:text-lg">

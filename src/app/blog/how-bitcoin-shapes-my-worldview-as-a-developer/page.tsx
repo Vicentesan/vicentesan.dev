@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 
+import { BlogHeader } from '@/components/blog-header'
+
 export const metadata: Metadata = {
   title: 'How Bitcoin Shapes My Worldview as a Developer',
   description:
@@ -53,9 +55,11 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 sm:gap-8 sm:px-6 md:gap-16 md:px-8">
-      <h1 className="mt-6 text-2xl font-bold sm:mt-8 sm:text-3xl md:mt-10 md:text-4xl">
-        How Bitcoin Shapes My Worldview as a Developer
-      </h1>
+      <BlogHeader
+        title="How Bitcoin Shapes My Worldview as a Developer"
+        date="March 15, 2025"
+        slug="how-bitcoin-shapes-my-worldview-as-a-developer"
+      />
 
       <div className="flex flex-col gap-3 md:gap-4">
         <p className="text-muted-foreground text-sm sm:text-base md:text-lg">

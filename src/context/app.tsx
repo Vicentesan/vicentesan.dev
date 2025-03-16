@@ -7,6 +7,8 @@ import NextTopLoader from 'nextjs-toploader'
 import * as NProgress from 'nprogress'
 import { ReactNode, useEffect, useState } from 'react'
 
+import { Toaster } from '@/components/ui/sonner'
+
 type AppWrapperProps = {
   children: ReactNode
 }
@@ -29,6 +31,7 @@ export const AppWrapper = ({ children }: AppWrapperProps) => {
         enableSystem
         disableTransitionOnChange
       >
+        <Toaster richColors closeButton position="bottom-right" />
         <NextTopLoader color="#ccc" showSpinner={false} />
         {children}
       </ThemeProvider>
