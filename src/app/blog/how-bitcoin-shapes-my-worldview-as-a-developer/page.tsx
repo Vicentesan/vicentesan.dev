@@ -57,7 +57,7 @@ export default function Page() {
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 sm:gap-8 sm:px-6 md:gap-16 md:px-8">
       <BlogHeader
         title="How Bitcoin Shapes My Worldview as a Developer"
-        date="March 15, 2025"
+        date="March 14, 2025"
         slug="how-bitcoin-shapes-my-worldview-as-a-developer"
       />
 

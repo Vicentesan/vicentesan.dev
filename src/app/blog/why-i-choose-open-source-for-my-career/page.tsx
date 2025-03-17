@@ -58,7 +58,7 @@ export default function Page() {
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 sm:gap-8 sm:px-6 md:gap-16 md:px-8">
       <BlogHeader
         title="Why I chose Open Source for my career"
-        date="March 17, 2025"
+        date="March 15, 2025"
         slug="why-i-choose-open-source-for-my-career"
       />
 

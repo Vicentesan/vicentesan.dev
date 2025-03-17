@@ -57,7 +57,7 @@ export default function Page() {
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 sm:gap-8 sm:px-6 md:gap-16 md:px-8">
       <BlogHeader
         title="How I Got Started in Development"
-        date="March 16, 2025"
+        date="March 13, 2025"
         slug="how-i-got-started-in-development"
       />
 
