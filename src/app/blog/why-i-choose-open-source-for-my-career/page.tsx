@@ -57,16 +57,16 @@ export default function Page() {
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 sm:gap-8 sm:px-6 md:gap-16 md:px-8">
       <BlogHeader
-        title="Why I chose Open Source for my career"
+        title="Why I Chose Open Source for My Career"
         date="March 15, 2025"
         slug="why-i-choose-open-source-for-my-career"
       />
 
       <div className="flex flex-col gap-3 md:gap-4">
         <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
-          my journey into the world of software started, like many, with using
-          software. <span className="text-foreground">bitcoin</span>, obviously.
-          then there was <span className="text-foreground">AnyType</span>,{' '}
+          My journey into the world of software started, like many, with using
+          software. <span className="text-foreground">Bitcoin</span>, obviously.
+          Then there was <span className="text-foreground">AnyType</span>,{' '}
           <span className="text-foreground">NosTR</span>, various development
           libraries and frameworks… and then came{' '}
           <Link
@@ -76,23 +76,23 @@ export default function Page() {
           >
             <span className="text-foreground">plotwist.app</span>
           </Link>
-          . that was my{' '}
+          . That was my{' '}
           <span className="text-foreground">
             first open source contribution
           </span>
-          . and that <span className="text-foreground">changed everything</span>
+          . And that <span className="text-foreground">changed everything</span>
           .
         </p>
 
         <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
-          open source isn't just about free software; it's about a{' '}
-          <span className="text-foreground">philosophy</span>. it's about{' '}
+          Open source isn't just about free software; it's about a{' '}
+          <span className="text-foreground">philosophy</span>. It's about{' '}
           <span className="text-foreground">collaboration</span>,{' '}
           <span className="text-foreground">transparency</span>,{' '}
           <span className="text-foreground">community</span>,{' '}
           <span className="text-foreground">freedom</span>, and
-          <span className="text-foreground"> innovation</span>. it's the same
-          ethos that draws me to bitcoin, the belief that{' '}
+          <span className="text-foreground"> innovation</span>. It's the same
+          ethos that draws me to Bitcoin, the belief that{' '}
           <span className="text-foreground">shared effort</span> and{' '}
           <span className="text-foreground">open access</span> can create
           something truly powerful.
@@ -100,14 +100,14 @@ export default function Page() {
 
         <div className="flex flex-col gap-3 md:gap-4">
           <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
-            the benefits of contributing to open source are immense. for me,
+            The benefits of contributing to open source are immense. For me,
             it's about:
           </p>
 
           <ul className="text-muted-foreground list-disc pl-4 text-sm sm:text-base md:text-lg">
             <li>
               <span className="text-foreground font-bold">
-                skill development:{' '}
+                Skill development:{' '}
               </span>
               <span className="text-foreground">
                 learning from experienced developers
@@ -115,7 +115,7 @@ export default function Page() {
               and tackling real-world problems.
             </li>
             <li>
-              <span className="text-foreground font-bold">networking: </span>
+              <span className="text-foreground font-bold">Networking: </span>
               <span className="text-foreground">
                 connecting with like-minded individuals
               </span>{' '}
@@ -123,20 +123,20 @@ export default function Page() {
             </li>
             <li>
               <span className="text-foreground font-bold">
-                building a portfolio:{' '}
+                Building a portfolio:{' '}
               </span>
               <span className="text-foreground">showcasing my abilities</span>{' '}
               to potential employers (or future collaborators).{' '}
             </li>
             <li>
-              <span className="text-foreground font-bold">giving back: </span>
+              <span className="text-foreground font-bold">Giving back: </span>
               <span className="text-foreground">
                 contributing to projects
               </span>{' '}
-              that i use and believe in.
+              that I use and believe in.
             </li>
             <li>
-              <span className="text-foreground font-bold">getting known: </span>
+              <span className="text-foreground font-bold">Getting known: </span>
               <span className="text-foreground">
                 building a reputation
               </span>{' '}
@@ -146,58 +146,58 @@ export default function Page() {
         </div>
 
         <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
-          it's not always easy. coordinating with other developers, navigating
+          It's not always easy. Coordinating with other developers, navigating
           different coding styles and codebases… it can be{' '}
-          <span className="text-foreground">challenging</span>. but the
+          <span className="text-foreground">challenging</span>. But the
           <span className="text-foreground"> rewards far outweigh</span> the
           difficulties.
         </p>
 
         <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
-          i'm drawn to open source projects across the spectrum:{' '}
+          I'm drawn to open source projects across the spectrum:{' '}
           <span className="text-foreground">frameworks</span>,{' '}
           <span className="text-foreground">developer tools</span>,{' '}
           <span className="text-foreground">applications</span>, even{' '}
-          <span className="text-foreground">protocols</span>. anything that{' '}
+          <span className="text-foreground">protocols</span>. Anything that{' '}
           <span className="text-foreground">empowers developers</span> and{' '}
           <span className="text-foreground">promotes innovation</span> is fair
           game.
         </p>
 
         <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
-          i know it's early (i'm only{' '}
-          <span className="text-foreground">15</span>), but one thing i'm{' '}
-          <span className="text-foreground">sure about</span> is that i{' '}
-          <span className="text-foreground">simply love open source</span>. i
-          can't imagine building software any other way. and i{' '}
+          I know it's early (I'm only{' '}
+          <span className="text-foreground">15</span>), but one thing I'm{' '}
+          <span className="text-foreground">sure about</span> is that I{' '}
+          <span className="text-foreground">simply love open source</span>. I
+          can't imagine building software any other way. And I{' '}
           <span className="text-foreground">know it can be a career</span>.
         </p>
 
         <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
-          i believe the{' '}
+          I believe the{' '}
           <span className="text-foreground">future belongs to open source</span>
-          . in a world increasingly concerned with{' '}
+          . In a world increasingly concerned with{' '}
           <span className="text-foreground">security and transparency</span>,
           closed-source solutions will become{' '}
-          <span className="text-foreground">relics of the past</span>. fear of
+          <span className="text-foreground">relics of the past</span>. Fear of
           the unknown will drive adoption of
           <span className="text-foreground"> open, auditable code</span>.
         </p>
 
         <p className="text-muted-foreground pb-6 text-sm sm:pb-8 sm:text-base md:pb-12 md:text-lg">
-          my advice to aspiring open source developers?{' '}
+          My advice to aspiring open source developers?{' '}
           <span className="text-foreground">
-            find something you're passionate about
+            Find something you're passionate about
           </span>
-          . then,{' '}
+          . Then,{' '}
           <span className="text-foreground">
             find a project that aligns with that passion
           </span>
-          . if it doesn't exist,{' '}
+          . If it doesn't exist,{' '}
           <span className="text-foreground">
             create it – and build it openly
           </span>
-          . you'll be surprised{' '}
+          . You'll be surprised{' '}
           <span className="text-foreground">
             how many people are willing to help
           </span>
