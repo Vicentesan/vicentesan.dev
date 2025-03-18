@@ -33,38 +33,59 @@ export default function Home() {
         </div>
 
         <p className="text-muted-foreground text-base font-medium md:text-lg">
-          Hello, I&apos;m Vicente, a{' '}
+          Hello, <span className="text-foreground">I&apos;m Vicente</span>, a{' '}
           <span className="text-foreground">Full Stack Developer</span> based in
           Brazil.
         </p>
 
         <p className="text-muted-foreground text-base font-medium md:text-lg">
-          I&apos;m passionate about{' '}
-          <span className="text-foreground">minimalism</span>,{' '}
+          I&apos;m{' '}
+          <span className="text-foreground">passionate about minimalism</span>,{' '}
           <span className="text-foreground">dark mode</span>,{' '}
-          <span className="text-foreground">open-source</span>, and Bitcoin,
-          combining these interests to create streamlined and impactful digital
-          experiences. Since starting my journey during the pandemic, I&apos;ve
-          been dedicated to crafting innovative and efficient solutions that
-          align with my love for technology and open collaboration.
+          <span className="text-foreground">open-source</span>, and{' '}
+          <span className="text-foreground">Bitcoin</span>,{' '}
+          <span className="text-foreground">
+            combining these interests to create
+          </span>{' '}
+          streamlined and{' '}
+          <span className="text-foreground">impactful digital experiences</span>
+          . Since starting my journey during the pandemic, I&apos;ve been{' '}
+          <span className="text-foreground">
+            dedicated to crafting innovative and efficient solutions
+          </span>{' '}
+          that align{' '}
+          <span className="text-foreground">
+            with my love for technology and open collaboration
+          </span>
+          .
         </p>
 
         <p className="text-muted-foreground text-base font-medium md:text-lg">
-          Currently, I&apos;m building{' '}
-          <Link
-            href="https://palmaresjs.com/"
-            className="text-foreground underline-offset-4 hover:underline"
-          >
-            Palmares
-          </Link>
-          , a <span className="text-foreground">TypeScript framework</span>{' '}
-          designed to unify the JS ecosystem and provide a{' '}
+          Currently,{' '}
+          <span className="text-foreground">
+            I&apos;m building{' '}
+            <Link
+              href="https://palmaresjs.com/"
+              className="text-foreground underline-offset-4 hover:underline"
+            >
+              Palmares
+            </Link>
+          </span>
+          , <span className="text-foreground">a TypeScript framework</span>{' '}
+          designed{' '}
+          <span className="text-foreground">to unify the JS ecosystem</span> and
+          provide a{' '}
           <span className="text-foreground">
             100% type-safe backend solution
           </span>
-          , aiming to surpass NestJS. I&apos;ve transitioned from broad
-          freelance work to focus solely on this project, which embodies my
-          fundamental principles through its innovative approach.
+          , <span className="text-foreground">aiming to surpass NestJS</span>.
+          I&apos;ve transitioned from broad freelance work to focus solely on
+          this project,{' '}
+          <span className="text-foreground">
+            which embodies my fundamental principles through its innovative
+            approach
+          </span>
+          .
         </p>
       </div>
 
