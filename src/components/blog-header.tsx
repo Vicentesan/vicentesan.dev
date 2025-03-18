@@ -66,7 +66,7 @@ export function BlogHeader({
 
           <div>
             <Button
-              variant="outline"
+              className="bg-emerald-500/20 text-emerald-500 ring-[1.5px] ring-emerald-500/40 hover:bg-emerald-500/30"
               onClick={() => {
                 navigator.clipboard.writeText(
                   `${window.location.origin}/blog/${slug}`,
