@@ -4,9 +4,9 @@ import Link from 'next/link'
 import { BlogHeader } from '@/components/blog-header'
 
 export const metadata: Metadata = {
-  title: 'Why My Christmas SaaS Failed',
+  title: 'Designing a Portfolio That Reflects My Principles',
   description:
-    "Lessons learned from launching a seasonal SaaS product, the challenges I faced, and what I'll do differently next time.",
+    'How I created a portfolio that embodies my core values of minimalism, fluidity, and open source principles while showcasing my work and passion for Bitcoin.',
   authors: [
     {
       name: 'Vicente Sanchez',
@@ -14,10 +14,10 @@ export const metadata: Metadata = {
     },
   ],
   openGraph: {
-    title: 'Why My Christmas SaaS Failed',
+    title: 'Designing a Portfolio That Reflects My Principles',
     description:
-      "Lessons learned from launching a seasonal SaaS product, the challenges I faced, and what I'll do differently next time.",
-    url: 'https://vicentesan.dev/blog/why-my-christmas-saas-failed',
+      'How I created a portfolio that embodies my core values of minimalism, fluidity, and open source principles while showcasing my work and passion for Bitcoin.',
+    url: 'https://vicentesan.dev/blog/designing-a-portfolio-that-reflects-my-principles',
     type: 'article',
     images: [
       {
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Why My Christmas SaaS Failed',
+    title: 'Designing a Portfolio That Reflects My Principles',
     description:
-      "Lessons learned from launching a seasonal SaaS product, the challenges I faced, and what I'll do differently next time.",
+      'How I created a portfolio that embodies my core values of minimalism, fluidity, and open source principles while showcasing my work and passion for Bitcoin.',
     creator: '@vicentesan.dev',
     images: [
       {
@@ -42,15 +42,16 @@ export const metadata: Metadata = {
     ],
   },
   keywords: [
-    'saas',
-    'startup failure',
-    'software development',
-    'entrepreneurship',
-    'technical challenges',
-    'api integration',
-    'planning',
-    'lessons learned',
+    'portfolio design',
+    'minimalism',
+    'fluidity',
     'open source',
+    'Bitcoin',
+    'developer portfolio',
+    'web development',
+    'dark mode',
+    'user experience',
+    'personal branding',
   ],
 }
 
