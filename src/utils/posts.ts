@@ -1,5 +1,10 @@
 export const posts = [
   {
+    title: 'Designing a Portfolio That Reflects My Principles',
+    slug: 'designing-a-portfolio-that-reflects-my-principles',
+    date: '2025-03-19',
+  },
+  {
     title: 'Why My Christmas SaaS Failed',
     slug: 'why-my-christmas-saas-failed',
     date: '2025-03-18',

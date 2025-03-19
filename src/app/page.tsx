@@ -4,9 +4,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-import { posts } from '@/blog/posts'
 import { cn } from '@/lib/utils'
+import { crafts } from '@/utils/crafts'
 import { formatItemDate } from '@/utils/format-item-date'
+import { posts } from '@/utils/posts'
 
 export default function Home() {
   const [hoveredPost, setHoveredPost] = useState<string | null>(null)
@@ -71,13 +72,66 @@ export default function Home() {
       <div className="flex flex-col gap-6 md:gap-10">
         <div className="flex flex-row items-center justify-center gap-2">
           <span className="text-muted-foreground text-base font-medium md:text-lg">
+            Craft
+          </span>
+          <span className="bg-muted-foreground h-px w-full" />
+        </div>
+
+        <ul className="flex flex-col items-start justify-start gap-4 md:gap-6">
+          {crafts.map((craft) => (
+            <li
+              key={craft.href}
+              className={cn(
+                'relative z-10 flex w-full flex-col items-start justify-between gap-2 rounded-md transition-all duration-300 ease-out will-change-transform sm:flex-row sm:items-center',
+                hoveredPost === craft.href
+                  ? 'bg-accent/40 ring-accent/50 -translate-y-[3px] scale-[1.03] opacity-100 shadow-md ring-1'
+                  : hoveredPost
+                    ? 'opacity-70 blur-[1px]'
+                    : 'opacity-100',
+                'hover:bg-accent/10 -m-2 p-2',
+              )}
+              onMouseEnter={() => setHoveredPost(craft.href)}
+              onMouseLeave={() => setHoveredPost(null)}
+            >
+              <Link
+                href={craft.href}
+                className="flex w-full flex-col items-center justify-center gap-2 sm:flex-row"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="flex shrink-0 flex-row items-center gap-2 whitespace-normal">
+                  <span className="text-foreground font-sans text-sm font-medium md:text-base">
+                    {craft.name}
+                  </span>
+
+                  <span className="text-muted-foreground font-mono text-xs md:text-sm">
+                    {craft.description}
+                  </span>
+                </div>
+
+                <div className="border-muted-foreground w-full border-t border-dashed" />
+
+                <div className="mt-1 flex items-center justify-end sm:mt-0 sm:ml-auto">
+                  <span className="text-muted-foreground font-mono text-xs md:text-sm">
+                    {craft.date}
+                  </span>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="flex flex-col gap-6 md:gap-10">
+        <div className="flex flex-row items-center justify-center gap-2">
+          <span className="text-muted-foreground text-base font-medium md:text-lg">
             Writing
           </span>
           <span className="bg-muted-foreground h-px w-full" />
         </div>
 
         <ul className="flex flex-col items-start justify-start gap-4 md:gap-6">
-          {posts.map((post) => (
+          {posts.slice(0, 5).map((post) => (
             <li
               key={post.slug}
               className={cn(

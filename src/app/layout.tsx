@@ -1,8 +1,10 @@
 import './globals.css'
 
+import { AnimatePresence } from 'motion/react'
 import type { Metadata, Viewport } from 'next'
 
 import { Footer } from '@/components/footer'
+import { PageTransition } from '@/components/page-transition'
 import { AppWrapper } from '@/context/app'
 
 const metadataTitle = 'Vicente Sanchez | Full Stack Developer'
@@ -98,7 +100,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className="bg-background mx-auto my-12 flex max-w-3xl items-center justify-start">
         <AppWrapper>
           <main className="flex min-h-screen w-full flex-col gap-20">
-            {children}
+            <AnimatePresence mode="popLayout">
+              <PageTransition>{children}</PageTransition>
+            </AnimatePresence>
             <Footer />
           </main>
         </AppWrapper>
