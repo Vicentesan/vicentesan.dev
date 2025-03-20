@@ -95,11 +95,11 @@ export default function Home() {
             >
               <Link
                 href={craft.href}
-                className="flex w-full flex-col items-center justify-center gap-2 sm:flex-row"
+                className="flex w-full flex-col gap-3 sm:flex-row sm:items-center"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <div className="flex shrink-0 flex-row items-center gap-2 whitespace-normal">
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-2">
                   <span className="text-foreground font-sans text-sm font-medium md:text-base">
                     {craft.name}
                   </span>
@@ -109,9 +109,9 @@ export default function Home() {
                   </span>
                 </div>
 
-                <div className="border-muted-foreground w-full border-t border-dashed" />
+                <div className="border-muted-foreground my-2 w-full border-t border-dashed sm:my-0 sm:w-auto sm:flex-1" />
 
-                <div className="mt-1 flex items-center justify-end sm:mt-0 sm:ml-auto">
+                <div className="flex items-center">
                   <span className="text-muted-foreground font-mono text-xs md:text-sm">
                     {craft.date}
                   </span>
