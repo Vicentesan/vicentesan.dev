@@ -97,6 +97,9 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html suppressHydrationWarning lang="en">
+      <head>
+        <script src="https://assets.onedollarstats.com/stonks.js" />
+      </head>
       <body className="bg-background mx-auto my-12 flex max-w-3xl items-center justify-start">
         <AppWrapper>
           <main className="flex min-h-screen w-full flex-col gap-20">
