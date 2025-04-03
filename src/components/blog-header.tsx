@@ -23,6 +23,8 @@ export function BlogHeader({
   date: string
   slug: string
 }) {
+  const displayTitle = title.replace(/&apos;/g, "'")
+
   return (
     <div className="flex flex-col gap-1 md:gap-2">
       <Breadcrumb>
@@ -36,14 +38,14 @@ export function BlogHeader({
           </BreadcrumbItem>
           <BreadcrumbSeparator>/</BreadcrumbSeparator>
           <BreadcrumbItem>
-            <BreadcrumbPage>{title}</BreadcrumbPage>
+            <BreadcrumbPage>{displayTitle}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
 
       <div className="flex flex-col gap-3 md:gap-4">
         <h1 className="mt-6 text-2xl font-bold sm:mt-8 sm:text-3xl md:mt-10 md:text-4xl">
-          {title}
+          {displayTitle}
         </h1>
 
         <div className="flex max-w-[596px] flex-row justify-between">

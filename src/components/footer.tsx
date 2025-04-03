@@ -4,7 +4,7 @@ import { ThemeToggle } from './ui/theme-toogle'
 
 export function Footer() {
   return (
-    <footer className="flex flex-col gap-4 text-neutral-600 sm:flex-row sm:justify-between dark:text-neutral-400">
+    <footer className="flex max-w-4xl flex-col gap-4 text-neutral-600 sm:flex-row sm:justify-between dark:text-neutral-400">
       <div className="flex flex-row items-center justify-center gap-2 sm:justify-start">
         <span className="text-center sm:text-left">
           Copyright {new Date().getFullYear()} · Made by Vicente

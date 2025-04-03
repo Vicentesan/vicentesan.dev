@@ -1,4 +1,18 @@
+type Post = {
+  title: string
+  slug: string
+  date: string
+  topics: string[]
+}
+
 export const posts = [
+  {
+    title:
+      'Blockchain: the cybersecurity revolution we didn&apos;t know we needed',
+    slug: 'blockchain-the-cybersecurity-revolution-we-didnt-know-we-needed',
+    date: '2025-04-04',
+    topics: ['blockchain', 'cybersc', 'revolution'],
+  },
   {
     title: 'Designing a Portfolio That Reflects My Principles',
     slug: 'designing-a-portfolio-that-reflects-my-principles',
@@ -29,4 +43,4 @@ export const posts = [
     date: '2025-03-13',
     topics: ['hello-world', 'development', 'tips'],
   },
-]
+] satisfies Post[]
