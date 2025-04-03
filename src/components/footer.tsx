@@ -42,7 +42,7 @@ export function Footer() {
         </span>
         <div>
           <Link
-            href="https://x.com/vicentesan"
+            href="https://x.com/vicentesandev"
             target="_blank"
             className="text-sm text-neutral-900 underline underline-offset-4 sm:text-base dark:text-neutral-50"
           >
