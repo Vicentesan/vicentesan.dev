@@ -53,19 +53,19 @@ export default function Home() {
         <p className="text-muted-foreground text-base font-medium md:text-lg">
           Currently, I&apos;m building{' '}
           <Link
-            href="https://palmaresjs.com/"
+            href="https://github.com/usetesseractdotco"
             className="text-foreground underline-offset-4 hover:underline"
           >
-            Palmares
+            Tesseract
           </Link>
-          , a <span className="text-foreground">TypeScript framework</span>{' '}
-          designed to unify the JS ecosystem and provide a{' '}
+          , an <span className="text-foreground">open-source platform</span>{' '}
+          designed to integrate{' '}
           <span className="text-foreground">
-            100% type-safe backend solution
+            web2 and blockchain with seamless efficiency
           </span>
-          , aiming to surpass NestJS. I&apos;ve transitioned from broad
-          freelance work to focus solely on this project, which embodies my
-          fundamental principles through its innovative approach.
+          , providing a robust backend-as-a-service. i&apos;ve shifted my focus
+          to this project, channeling my passion for transparency and innovation
+          into a tool that simplifies the complex.
         </p>
       </div>
 
