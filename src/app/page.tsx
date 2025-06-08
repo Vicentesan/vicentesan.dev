@@ -1,5 +1,6 @@
 'use client'
 
+import brazilFlag from '@/assets/brazil.png'
 import tesseractLogo from '@/assets/tesseract-logo.png'
 import vicenteSanchez from '@/assets/vicentesan.jpg'
 import { InfoWrapper } from '@/components/info-wrapper'
@@ -9,6 +10,7 @@ import { ProfileImage } from '@/components/profile-img'
 import { cn } from '@/lib/utils'
 import { differenceInYears } from 'date-fns'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { useMediaQuery } from 'usehooks-ts'
 
 export default function Home() {
@@ -118,7 +120,13 @@ export default function Home() {
           )}
         >
           <span className="text-muted-foreground">currently based in</span>
-          <span>São Paulo, 🇧🇷 Brazil</span>
+          <span>São Paulo, </span>
+          <Image
+            src={brazilFlag}
+            alt="Brazil"
+            className="size-8 sm:size-12 lg:size-24"
+          />
+          <span>Brazil</span>
         </motion.div>
       </div>
     </main>
