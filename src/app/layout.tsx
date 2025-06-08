@@ -65,7 +65,9 @@ export default function RootLayout({
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head />
+        <head>
+          <script src="https://assets.onedollarstats.com/stonks.js" />
+        </head>
         <body className={instrumentSerif.className}>
           <ThemeProvider
             attribute="class"
