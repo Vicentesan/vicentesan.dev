@@ -124,7 +124,7 @@ export default function Home() {
           <Image
             src={brazilFlag}
             alt="Brazil"
-            className="size-8 sm:size-12 lg:size-24"
+            className="pointer-events-none size-8 select-none sm:size-12 lg:size-24"
           />
           <span>Brazil</span>
         </motion.div>
