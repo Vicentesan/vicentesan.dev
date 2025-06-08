@@ -21,8 +21,8 @@ export default function Home() {
   const age = differenceInYears(today, birthDate)
 
   return (
-    <main className="mx-auto flex h-screen w-full max-w-7xl flex-col items-center justify-center">
-      <div className="flex w-fit flex-col items-start gap-4 font-instrument-serif">
+    <main className="mx-auto mt-40 flex h-screen w-full max-w-7xl flex-col items-center justify-start md:justify-center">
+      <div className="flex w-fit flex-col items-start gap-2 font-instrument-serif md:gap-4">
         <motion.div
           initial={{
             opacity: 0,
