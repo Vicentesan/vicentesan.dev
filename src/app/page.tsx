@@ -38,11 +38,17 @@ export default function Home() {
           }}
           transition={{ duration: 0.5 }}
         >
-          <InfoWrapper content="Check out my GitHub">
+          <InfoWrapper
+            link="https://github.com/vicentesan"
+            content="Check out my GitHub"
+          >
             <GithubLogo className="size-4 sm:size-6" />
           </InfoWrapper>
 
-          <InfoWrapper content="Follow me on X/Twitter">
+          <InfoWrapper
+            link="https://x.com/vicentesandev"
+            content="Follow me on X/Twitter"
+          >
             <XLogo className="size-4 sm:size-6" />
           </InfoWrapper>
         </motion.div>
