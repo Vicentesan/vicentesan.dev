@@ -15,6 +15,10 @@ export const metadata: Metadata = {
   title: 'Vicente Sanchez',
   description:
     'Exploring the enchantment of Web3 with a focus on backend innovation.',
+  metadataBase: new URL('https://eric.rest'),
+  alternates: {
+    canonical: '/',
+  },
   keywords: [
     'Full Stack Developer',
     'Tesseract',
@@ -29,32 +33,12 @@ export const metadata: Metadata = {
       url: 'https://vicentesan.dev',
     },
   ],
-  openGraph: {
-    title: 'Vicente Sanchez',
-    description:
-      'Exploring the enchantment of Web3 with a focus on backend innovation.',
-    type: 'website',
-    images: [
-      {
-        url: ogImage.src,
-        width: 800,
-        height: 600,
-        alt: 'Vicente Sanchez',
-      },
-    ],
-  },
   twitter: {
     card: 'summary_large_image',
     title: 'Vicente Sanchez',
     description:
       'Exploring the enchantment of Web3 with a focus on backend innovation.',
     creator: '@vicentesandev',
-    images: [
-      {
-        url: ogImage.src,
-        alt: 'Vicente Sanchez',
-      },
-    ],
   },
   robots: 'index, follow',
 }
