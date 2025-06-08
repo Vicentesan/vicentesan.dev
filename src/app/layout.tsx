@@ -1,115 +1,82 @@
+import { ThemeProvider } from '@/components/theme-provider'
+import { TooltipProvider } from '@/components/ui/tooltip'
+import type { Metadata } from 'next'
+import { Instrument_Serif as InstrumentSerif } from 'next/font/google'
 import './globals.css'
 
-import { AnimatePresence } from 'motion/react'
-import type { Metadata, Viewport } from 'next'
-
-import { Footer } from '@/components/footer'
-import { PageTransition } from '@/components/page-transition'
-import { AppWrapper } from '@/context/app'
-
-const metadataTitle = 'Vicente Sanchez | Full Stack Developer'
-const metadataDescription =
-  'Full Stack Developer passionate about minimalism, open-source, and Bitcoin. Building innovative products that help people.'
-const metadataImage = '/vicente-san-grayscale.png'
-const metadataUrl = 'https://vicentesan.dev'
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  themeColor: '#09090b',
-}
+const instrumentSerif = InstrumentSerif({
+  variable: '--font-instrument-serif',
+  subsets: ['latin'],
+  weight: ['400'],
+})
 
 export const metadata = {
-  title: {
-    default: metadataTitle,
-    template: '%s | Vicente Sanchez',
-  },
-  description: metadataDescription,
-  metadataBase: new URL(metadataUrl),
+  title: 'Vicente Sanchez',
+  description:
+    'Exploring the enchantment of Web3 with a focus on backend innovation.',
+  keywords: [
+    'Full Stack Developer',
+    'Tesseract',
+    'Web2',
+    'Web3',
+    'São Paulo',
+    'Brazil',
+  ],
   authors: [
     {
       name: 'Vicente Sanchez',
-      url: metadataUrl,
+      url: 'https://vicentesan.dev',
     },
   ],
-  creator: 'Vicente Sanchez',
   openGraph: {
+    title: 'Vicente Sanchez',
+    description:
+      'Exploring the enchantment of Web3 with a focus on backend innovation.',
     type: 'website',
-    locale: 'en_US',
-    url: metadataUrl,
-    title: metadataTitle,
-    description: metadataDescription,
-    siteName: 'Vicente Sanchez',
     images: [
       {
-        url: metadataImage,
-        width: 400,
-        height: 400,
+        url: '/assets/og.png',
+        width: 800,
+        height: 600,
         alt: 'Vicente Sanchez',
       },
     ],
   },
   twitter: {
-    title: metadataTitle,
-    description: metadataDescription,
+    card: 'summary_large_image',
+    title: 'Vicente Sanchez',
+    description:
+      'Exploring the enchantment of Web3 with a focus on backend innovation.',
+    creator: '@vicentesandev',
     images: [
       {
-        url: metadataImage,
+        url: '/assets/og.png',
         alt: 'Vicente Sanchez',
       },
     ],
-    card: 'summary_large_image',
-    creator: '@vicentesandev',
-    site: '@vicentesandev',
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  keywords: [
-    'Vicente Sanchez',
-    'Full Stack Developer',
-    'Web Development',
-    'Bitcoin',
-    'Open Source',
-    'Minimalism',
-    'Software Engineer',
-    'Brazil',
-  ],
-  category: 'technology',
-  icons: {
-    icon: '/favicon-96x96.png',
-    shortcut: '/favicon-96x96.png',
-    apple: '/apple-touch-icon.png',
-  },
-} satisfies Metadata
-
-interface RootLayoutProps {
-  children: React.ReactNode
+  robots: 'index, follow',
+  language: 'en',
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({
+  children,
+}: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning lang="en">
-      <head>
-        <script src="https://assets.onedollarstats.com/stonks.js" />
-      </head>
-      <body className="bg-background mx-auto my-12 flex max-w-3xl items-center justify-start">
-        <AppWrapper>
-          <main className="flex min-h-screen w-full flex-col gap-20">
-            <AnimatePresence mode="popLayout">
-              <PageTransition>{children}</PageTransition>
-            </AnimatePresence>
-            <Footer />
-          </main>
-        </AppWrapper>
-      </body>
-    </html>
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body className={instrumentSerif.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <TooltipProvider>{children}</TooltipProvider>
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
   )
 }
