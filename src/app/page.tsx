@@ -2,27 +2,24 @@
 
 import tesseractLogo from '@/assets/tesseract-logo.png'
 import vicenteSanchez from '@/assets/vicentesan.jpg'
+import { InfoWrapper } from '@/components/info-wrapper'
 import { GithubLogo } from '@/components/logos/github-logo'
 import { XLogo } from '@/components/logos/x'
 import { ProfileImage } from '@/components/profile-img'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 import { differenceInYears } from 'date-fns'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
+import { useMediaQuery } from 'usehooks-ts'
 
 export default function Home() {
   const birthDate = new Date('2009-04-18')
   const today = new Date()
   const age = differenceInYears(today, birthDate)
+  const isMobile = useMediaQuery('(max-width: 767px)')
 
   return (
-    <main className="mx-auto mt-40 flex h-screen w-full max-w-7xl flex-col items-center justify-start md:justify-center">
-      <div className="flex w-fit flex-col items-start gap-2 font-instrument-serif md:gap-4">
+    <main className="mx-auto mt-40 flex h-screen w-full max-w-7xl flex-col items-center justify-start md:mt-0 md:justify-center">
+      <div className="flex w-fit flex-col items-start gap-2 font-instrument-serif lg:gap-4">
         <motion.div
           initial={{
             opacity: 0,
@@ -39,37 +36,13 @@ export default function Home() {
           }}
           transition={{ duration: 0.5 }}
         >
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href="https://github.com/vicentesan"
-                target="_blank"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="GitHub"
-              >
-                <GithubLogo className="size-4 sm:size-6" />
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent className="font-sans">
-              Check out my GitHub
-            </TooltipContent>
-          </Tooltip>
+          <InfoWrapper content="Check out my GitHub">
+            <GithubLogo className="size-4 sm:size-6" />
+          </InfoWrapper>
 
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href="https://x.com/vicentesandev"
-                target="_blank"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="Twitter"
-              >
-                <XLogo className="size-4 sm:size-6" />
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent className="font-sans">
-              Follow me on X/Twitter
-            </TooltipContent>
-          </Tooltip>
+          <InfoWrapper content="Follow me on X/Twitter">
+            <XLogo className="size-4 sm:size-6" />
+          </InfoWrapper>
         </motion.div>
 
         <motion.div
@@ -87,21 +60,14 @@ export default function Home() {
           }}
           transition={{ duration: 0.5, delay: 1 * 0.2 }}
           className={cn(
-            'flex flex-row items-center justify-start gap-2 text-foreground text-xl sm:text-3xl md:text-7xl'
+            'flex flex-row items-center justify-start gap-0.5 text-foreground text-xl sm:text-3xl md:gap-2 lg:text-7xl'
           )}
         >
           <span className="text-muted-foreground">Hey,</span>
           <span>I&apos;m</span>
-          <Tooltip>
-            <TooltipTrigger>
-              <ProfileImage image={vicenteSanchez} alt="Vicente Sanchez" />
-            </TooltipTrigger>
-
-            <TooltipContent className="font-sans">
-              My Dinda Nata, aka Godmother Natalia, and I in Bariloche,
-              Argentina.
-            </TooltipContent>
-          </Tooltip>
+          <InfoWrapper content="My Dinda Nata, aka Godmother Natalia, and I in Bariloche, Argentina.">
+            <ProfileImage image={vicenteSanchez} alt="Vicente Sanchez" />
+          </InfoWrapper>
           <span>Vicente</span>
         </motion.div>
 
@@ -120,26 +86,17 @@ export default function Home() {
           }}
           transition={{ duration: 0.5, delay: 2 * 0.2 }}
           className={cn(
-            'flex flex-row items-center justify-start gap-2 font-instrument-serif text-foreground text-xl sm:text-3xl md:text-7xl'
+            'flex flex-row items-center justify-start gap-0.5 font-instrument-serif text-foreground text-xl sm:text-3xl md:gap-2 lg:text-7xl'
           )}
         >
           <span className="text-muted-foreground">a {age}y/o swe building</span>
-          <Tooltip>
-            <Link
-              href="https://x.com/usetesseract"
-              target="_blank"
-              className="flex flex-row items-center justify-center"
-            >
-              <TooltipTrigger>
-                <ProfileImage image={tesseractLogo} aria-hidden />
-              </TooltipTrigger>
-
-              <span>Tesseract</span>
-            </Link>
-            <TooltipContent className="font-sans">
-              Tesseract is a opensource web2 and web3 baas.
-            </TooltipContent>
-          </Tooltip>
+          <InfoWrapper
+            content="Tesseract is a opensource web2 and web3 baas."
+            link="https://x.com/usetesseract"
+          >
+            <ProfileImage image={tesseractLogo} aria-hidden />
+          </InfoWrapper>
+          <span>Tesseract</span>
         </motion.div>
 
         <motion.div
@@ -157,7 +114,7 @@ export default function Home() {
           }}
           transition={{ duration: 0.5, delay: 3 * 0.2 }}
           className={cn(
-            'flex flex-row items-center justify-start gap-2 font-instrument-serif text-foreground text-xl sm:text-3xl md:text-7xl'
+            'flex flex-row items-center justify-start gap-2 font-instrument-serif text-foreground text-xl sm:text-3xl lg:text-7xl'
           )}
         >
           <span className="text-muted-foreground">currently based in</span>

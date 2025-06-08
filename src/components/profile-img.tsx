@@ -20,7 +20,7 @@ export function ProfileImage({
   return (
     <motion.div
       key={`${image.src}-profile-image-container`}
-      className="relative mx-2 size-8 cursor-pointer overflow-hidden rounded-md sm:size-12 sm:rounded-2xl md:size-24"
+      className="relative mx-2 size-8 cursor-pointer overflow-hidden sm:size-12 md:rounded-sm lg:size-24 lg:rounded-2xl"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.98 }}
       animate={{ scale: isParentHovered ? 1.05 : 1 }}
