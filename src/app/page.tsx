@@ -20,7 +20,7 @@ export default function Home() {
   const isMobile = useMediaQuery('(max-width: 767px)')
 
   return (
-    <main className="mx-auto mt-40 flex h-screen w-full max-w-7xl flex-col items-center justify-start md:mt-0 md:justify-center">
+    <main className="mx-auto mt-20 flex h-screen w-full max-w-7xl flex-col items-center justify-start md:mt-0 md:justify-center">
       <div className="flex w-fit flex-col items-start gap-2 font-instrument-serif lg:gap-4">
         <motion.div
           initial={{
