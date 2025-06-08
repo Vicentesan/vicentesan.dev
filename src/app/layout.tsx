@@ -1,3 +1,4 @@
+import ogImage from '@/assets/og.png'
 import { ThemeProvider } from '@/components/theme-provider'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import type { Metadata } from 'next'
@@ -10,7 +11,7 @@ const instrumentSerif = InstrumentSerif({
   weight: ['400'],
 })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Vicente Sanchez',
   description:
     'Exploring the enchantment of Web3 with a focus on backend innovation.',
@@ -35,7 +36,7 @@ export const metadata = {
     type: 'website',
     images: [
       {
-        url: '/assets/og.png',
+        url: ogImage.src,
         width: 800,
         height: 600,
         alt: 'Vicente Sanchez',
@@ -50,13 +51,12 @@ export const metadata = {
     creator: '@vicentesandev',
     images: [
       {
-        url: '/assets/og.png',
+        url: ogImage.src,
         alt: 'Vicente Sanchez',
       },
     ],
   },
   robots: 'index, follow',
-  language: 'en',
 }
 
 export default function RootLayout({
