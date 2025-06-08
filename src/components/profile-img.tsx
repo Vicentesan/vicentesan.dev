@@ -20,7 +20,7 @@ export function ProfileImage({
   return (
     <motion.div
       key={`${image.src}-profile-image-container`}
-      className="relative mx-2 size-24 cursor-pointer overflow-hidden rounded-2xl"
+      className="relative mx-2 size-8 cursor-pointer overflow-hidden rounded-md sm:size-12 sm:rounded-2xl md:size-24"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.98 }}
       animate={{ scale: isParentHovered ? 1.05 : 1 }}
@@ -30,14 +30,14 @@ export function ProfileImage({
       <motion.img
         src={image.src}
         alt={alt}
-        className="pointer-events-none h-full w-full select-none rounded-2xl object-cover"
+        className="pointer-events-none h-full w-full select-none rounded-md object-cover sm:rounded-2xl"
         layoutId={`${image.src}-profile-image`}
         aria-hidden={ariaHidden}
         loading="eager"
       />
       <motion.div
         layoutId={`${image.src}-profile-image-overlay`}
-        className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_0_0_10px_rgba(0,0,0,0.3)] outline-1 outline-muted/80 outline-offset-[-2px]"
+        className="pointer-events-none absolute inset-0 rounded-md shadow-[inset_0_0_10px_rgba(0,0,0,0.3)] outline-1 outline-muted/80 outline-offset-[-2px] sm:rounded-2xl"
       />
     </motion.div>
   )

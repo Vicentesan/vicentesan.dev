@@ -47,7 +47,7 @@ export default function Home() {
                 className="text-muted-foreground transition-colors hover:text-foreground"
                 aria-label="GitHub"
               >
-                <GithubLogo className="size-6" />
+                <GithubLogo className="size-4 sm:size-6" />
               </Link>
             </TooltipTrigger>
             <TooltipContent className="font-sans">
@@ -63,7 +63,7 @@ export default function Home() {
                 className="text-muted-foreground transition-colors hover:text-foreground"
                 aria-label="Twitter"
               >
-                <XLogo className="size-6" />
+                <XLogo className="size-4 sm:size-6" />
               </Link>
             </TooltipTrigger>
             <TooltipContent className="font-sans">
@@ -87,7 +87,7 @@ export default function Home() {
           }}
           transition={{ duration: 0.5, delay: 1 * 0.2 }}
           className={cn(
-            'flex flex-row items-center justify-start gap-2 text-7xl text-foreground'
+            'flex flex-row items-center justify-start gap-2 text-foreground text-xl sm:text-3xl md:text-7xl'
           )}
         >
           <span className="text-muted-foreground">Hey,</span>
@@ -120,7 +120,7 @@ export default function Home() {
           }}
           transition={{ duration: 0.5, delay: 2 * 0.2 }}
           className={cn(
-            'flex flex-row items-center justify-start gap-2 font-instrument-serif text-7xl text-foreground'
+            'flex flex-row items-center justify-start gap-2 font-instrument-serif text-foreground text-xl sm:text-3xl md:text-7xl'
           )}
         >
           <span className="text-muted-foreground">a {age}y/o swe building</span>
@@ -157,7 +157,7 @@ export default function Home() {
           }}
           transition={{ duration: 0.5, delay: 3 * 0.2 }}
           className={cn(
-            'flex flex-row items-center justify-start gap-2 font-instrument-serif text-7xl text-foreground'
+            'flex flex-row items-center justify-start gap-2 font-instrument-serif text-foreground text-xl sm:text-3xl md:text-7xl'
           )}
         >
           <span className="text-muted-foreground">currently based in</span>
