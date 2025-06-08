@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: 'Vicente Sanchez',
     images: [
       {
-        url: '/opengraph-image.png',
+        url: 'https://vicentesan.dev/opengraph-image.png',
         width: 400,
         height: 400,
         alt: 'Vicente Sanchez',
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     description:
       'Exploring the enchantment of Web3 with a focus on backend innovation.',
     creator: '@vicentesandev',
-    images: ['/opengraph-image.png'],
+    images: ['https://vicentesan.dev/opengraph-image.png'],
   },
   robots: 'index, follow',
 }
