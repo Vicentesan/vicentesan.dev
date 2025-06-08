@@ -22,7 +22,13 @@ export function InfoWrapper({
     return (
       <Popover>
         <PopoverTrigger asChild>
-          {link ? <Link href={link}>{children}</Link> : children}
+          {link ? (
+            <Link href={link} target="_blank" rel="noopener noreferrer">
+              {children}
+            </Link>
+          ) : (
+            children
+          )}
         </PopoverTrigger>
         <PopoverContent className="font-sans">{content}</PopoverContent>
       </Popover>
@@ -32,7 +38,13 @@ export function InfoWrapper({
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        {link ? <Link href={link}>{children}</Link> : children}
+        {link ? (
+          <Link href={link} target="_blank" rel="noopener noreferrer">
+            {children}
+          </Link>
+        ) : (
+          children
+        )}
       </TooltipTrigger>
       <TooltipContent className="font-sans">{content}</TooltipContent>
     </Tooltip>
