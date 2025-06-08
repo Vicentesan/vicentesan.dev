@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: 'Vicente Sanchez',
   description:
     'Exploring the enchantment of Web3 with a focus on backend innovation.',
-  metadataBase: new URL('https://eric.rest'),
+  metadataBase: new URL('https://vicentesan.dev'),
   alternates: {
     canonical: '/',
   },
@@ -33,12 +33,30 @@ export const metadata: Metadata = {
       url: 'https://vicentesan.dev',
     },
   ],
+  openGraph: {
+    title: 'Vicente Sanchez',
+    description:
+      'Exploring the enchantment of Web3 with a focus on backend innovation.',
+    url: 'https://vicentesan.dev',
+    siteName: 'Vicente Sanchez',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Vicente Sanchez',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
   twitter: {
     card: 'summary_large_image',
     title: 'Vicente Sanchez',
     description:
       'Exploring the enchantment of Web3 with a focus on backend innovation.',
     creator: '@vicentesandev',
+    images: ['/opengraph-image.png'],
   },
   robots: 'index, follow',
 }
