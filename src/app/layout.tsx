@@ -4,6 +4,7 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 import type { Metadata } from 'next'
 import { Instrument_Serif as InstrumentSerif } from 'next/font/google'
 import './globals.css'
+import { cn } from '@/lib/utils'
 
 const instrumentSerif = InstrumentSerif({
   variable: '--font-instrument-serif',
@@ -70,7 +71,7 @@ export default function RootLayout({
         <head>
           <script src="https://assets.onedollarstats.com/stonks.js" />
         </head>
-        <body className={instrumentSerif.className}>
+        <body className={cn(instrumentSerif.className, 'overflow-hidden')}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
