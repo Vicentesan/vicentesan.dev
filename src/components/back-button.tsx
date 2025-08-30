@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export function BackButton(props: LucideProps) {
   return (
-    <div className="-left-50 absolute top-22">
+    <div className="lg:-left-50 min-md:-left-15 absolute top-10 left-25 md:top-22 min-sm:left-0">
       <Link href="/" title="Go back" className="group flex items-center">
         <svg
           width="18px"

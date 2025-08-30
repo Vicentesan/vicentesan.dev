@@ -19,7 +19,7 @@ export default function InvisibleBlockchainPage() {
     }
   }, []);
   return (
-    <main className="relative mx-auto flex w-fit max-w-xl flex-col items-start justify-center gap-8 py-20">
+    <main className="relative mx-auto flex w-fit max-w-xl flex-col items-start justify-center gap-8 py-20 max-sm:px-10">
       <BackButton />
 
       <div className="flex flex-col gap-2">

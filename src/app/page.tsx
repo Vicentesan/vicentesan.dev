@@ -2,7 +2,9 @@
 
 import { differenceInYears } from 'date-fns';
 import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import brazilFlag from '@/assets/brazil.png';
 import tesseractLogo from '@/assets/tesseract-logo.png';
 import vicenteSanchez from '@/assets/vicentesan.jpg';
@@ -18,7 +20,7 @@ export default function Home() {
   const age = differenceInYears(today, birthDate);
 
   return (
-    <main className="mx-auto mt-20 flex h-screen w-full max-w-7xl flex-col items-center justify-start md:mt-0 md:justify-center">
+    <main className="mx-auto mt-20 flex w-full max-w-7xl flex-col items-center justify-start overflow-hidden md:mt-0 md:h-screen md:justify-center">
       <div className="flex flex-col items-start justify-start gap-4">
         <div className="flex w-fit flex-col items-start gap-2 font-instrument-serif lg:gap-4">
           <motion.div
@@ -129,7 +131,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* <motion.div
+        <motion.div
           initial={{
             opacity: 0,
             y: 10,
@@ -149,7 +151,7 @@ export default function Home() {
             href="/blog/invisible-blockchain"
             className="flex flex-row items-center gap-1 text-muted-foreground tracking-wide transition-colors duration-0 hover:text-foreground hover:duration-150"
           >
-            Invisible Blockchain 
+            Invisible Blockchain
             <ArrowUpRight className="size-5" strokeWidth={1.5} />
           </Link>
           <span className="size-1 rounded-full bg-muted-foreground" />
@@ -159,7 +161,7 @@ export default function Home() {
           >
             RSS Feed
           </Link>
-        </motion.div> */}
+        </motion.div>
       </div>
     </main>
   );
