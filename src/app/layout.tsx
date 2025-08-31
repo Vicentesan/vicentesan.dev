@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Instrument_Serif as InstrumentSerif } from 'next/font/google';
+import { Instrument_Serif as InstrumentSerif, Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
@@ -9,6 +9,10 @@ const instrumentSerif = InstrumentSerif({
   variable: '--font-instrument-serif',
   subsets: ['latin'],
   weight: ['400']
+});
+
+const inter = Inter({
+  variable: '--font-sans'
 });
 
 export const metadata: Metadata = {
@@ -57,7 +61,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script src="https://assets.onedollarstats.com/stonks.js" />
       </head>
-      <body className={cn(instrumentSerif.className, 'overflow-x-hidden overflow-y-scroll')}>
+      <body
+        className={cn(
+          inter.variable,
+          instrumentSerif.className,
+          'overflow-x-hidden overflow-y-scroll'
+        )}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
