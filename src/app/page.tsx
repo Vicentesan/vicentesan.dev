@@ -154,13 +154,6 @@ export default function Home() {
             Invisible Blockchain
             <ArrowUpRight className="size-5" strokeWidth={1.5} />
           </Link>
-          <span className="size-1 rounded-full bg-muted-foreground" />
-          <Link
-            href="/blog/rss"
-            className="text-muted-foreground tracking-wide transition-colors duration-0 hover:text-foreground hover:duration-150"
-          >
-            RSS Feed
-          </Link>
         </motion.div>
       </div>
     </main>
