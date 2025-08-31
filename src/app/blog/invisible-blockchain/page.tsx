@@ -1,25 +1,59 @@
-'use client';
-
-import { useEffect } from 'react';
+import type { Metadata } from 'next';
 import { BackButton } from '@/components/back-button';
+import { ClientScrollHandler } from './client-scroll-handler';
+
+export const metadata = {
+  title: "Invisible Blockchain: Why Your Users Don't Care About Crypto",
+  description:
+    "The future of finance isn't about showing off blockchain, it's about making it disappear",
+  openGraph: {
+    title: "Invisible Blockchain: Why Your Users Don't Care About Crypto",
+    description:
+      "The future of finance isn't about showing off blockchain, it's about making it disappear",
+    images: [
+      {
+        url: 'https://vicentesan.dev/opengraph-image.png',
+        width: 400,
+        height: 400,
+        alt: 'Vicente Sanchez'
+      }
+    ],
+    locale: 'en_US',
+    type: 'article',
+    publishedTime: '2025-08-31T12:00:00Z',
+    authors: ['Vicente Sanchez']
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Invisible Blockchain: Why Your Users Don't Care About Crypto",
+    description:
+      "The future of finance isn't about showing off blockchain, it's about making it disappear",
+    images: ['https://vicentesan.dev/opengraph-image.png'],
+    creator: '@vicentesandev'
+  },
+  keywords: [
+    'blockchain',
+    'crypto',
+    'defi',
+    'user experience',
+    'fintech',
+    'latin america',
+    'pix',
+    'spei',
+    'cross-border payments',
+    'invisible technology'
+  ],
+  authors: [{ name: 'Vicente Sanchez' }],
+  category: 'Finance Technology',
+  alternates: {
+    canonical: 'https://vicentesan.dev/blog/invisible-blockchain'
+  }
+} satisfies Metadata;
 
 export default function InvisibleBlockchainPage() {
-  useEffect(() => {
-    const hash = window.location.hash;
-
-    if (hash) {
-      const elementId = hash.substring(1);
-      const element = document.getElementById(elementId);
-
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-    }
-  }, []);
   return (
     <main className="relative mx-auto flex w-fit max-w-xl flex-col items-start justify-center gap-8 py-20 max-sm:px-10">
+      <ClientScrollHandler />
       <BackButton />
 
       <div className="flex flex-col gap-2">
