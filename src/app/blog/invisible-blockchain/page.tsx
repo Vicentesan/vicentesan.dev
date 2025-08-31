@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { BackButton } from '@/components/back-button';
 import { ClientScrollHandler } from './client-scroll-handler';
+import { SectionHeader } from './interactive-headers';
 
 export const metadata = {
   title: "Invisible Blockchain: Why Your Users Don't Care About Crypto",
@@ -90,16 +91,7 @@ export default function InvisibleBlockchainPage() {
         </div>
 
         <div id="the-mom-test" className="flex flex-col gap-8">
-          <button
-            type="button"
-            onClick={() => {
-              document.getElementById('the-mom-test')?.scrollIntoView({ behavior: 'smooth' });
-              window.history.pushState(null, '', '#the-mom-test');
-            }}
-            className="cursor-pointer text-left font-medium text-3xl text-foreground transition-colors hover:text-primary"
-          >
-            The Mom Test
-          </button>
+          <SectionHeader id="the-mom-test">The Mom Test</SectionHeader>
 
           <div className="flex flex-col gap-8 font-sans">
             <p>
@@ -128,18 +120,9 @@ export default function InvisibleBlockchainPage() {
         </div>
 
         <div className="flex flex-col gap-8" id="technology-that-disappeared">
-          <button
-            type="button"
-            onClick={() => {
-              document
-                .getElementById('technology-that-disappeared')
-                ?.scrollIntoView({ behavior: 'smooth' });
-              window.history.pushState(null, '', '#technology-that-disappeared');
-            }}
-            className="cursor-pointer text-left font-instrument-serif font-medium text-3xl text-foreground transition-colors hover:text-primary"
-          >
+          <SectionHeader id="technology-that-disappeared">
             Technology That Disappeared
-          </button>
+          </SectionHeader>
 
           <div className="flex flex-col gap-8 font-sans">
             <p>
@@ -156,18 +139,9 @@ export default function InvisibleBlockchainPage() {
         </div>
 
         <div className="flex flex-col gap-8" id="what-people-actually-care-about">
-          <button
-            type="button"
-            onClick={() => {
-              document
-                .getElementById('what-people-actually-care-about')
-                ?.scrollIntoView({ behavior: 'smooth' });
-              window.history.pushState(null, '', '#what-people-actually-care-about');
-            }}
-            className="cursor-pointer text-left font-medium text-3xl text-foreground transition-colors hover:text-primary"
-          >
+          <SectionHeader id="what-people-actually-care-about">
             What People Actually Care About
-          </button>
+          </SectionHeader>
 
           <div className="flex flex-col gap-8 font-sans">
             <p>
@@ -196,18 +170,9 @@ export default function InvisibleBlockchainPage() {
         </div>
 
         <div className="flex flex-col gap-8" id="why-current-finance-fails">
-          <button
-            type="button"
-            onClick={() => {
-              document
-                .getElementById('why-current-finance-fails')
-                ?.scrollIntoView({ behavior: 'smooth' });
-              window.history.pushState(null, '', '#why-current-finance-fails');
-            }}
-            className="cursor-pointer text-left font-medium text-3xl text-foreground transition-colors hover:text-primary"
-          >
+          <SectionHeader id="why-current-finance-fails">
             Why Current Finance Still Fails
-          </button>
+          </SectionHeader>
 
           <div className="flex flex-col gap-8 font-sans">
             <p>
@@ -226,18 +191,7 @@ export default function InvisibleBlockchainPage() {
         </div>
 
         <div className="flex flex-col gap-8" id="what-good-looks-like">
-          <button
-            type="button"
-            onClick={() => {
-              document
-                .getElementById('what-good-looks-like')
-                ?.scrollIntoView({ behavior: 'smooth' });
-              window.history.pushState(null, '', '#what-good-looks-like');
-            }}
-            className="cursor-pointer text-left font-medium text-3xl text-foreground transition-colors hover:text-primary"
-          >
-            What "Good" Looks Like
-          </button>
+          <SectionHeader id="what-good-looks-like">What "Good" Looks Like</SectionHeader>
 
           <div className="flex flex-col gap-8 font-sans">
             <p>Imagine an app where you:</p>
@@ -262,18 +216,7 @@ export default function InvisibleBlockchainPage() {
         </div>
 
         <div className="flex flex-col gap-8" id="a-challenge-to-builders">
-          <button
-            type="button"
-            onClick={() => {
-              document
-                .getElementById('a-challenge-to-builders')
-                ?.scrollIntoView({ behavior: 'smooth' });
-              window.history.pushState(null, '', '#a-challenge-to-builders');
-            }}
-            className="cursor-pointer text-left font-medium text-3xl text-foreground transition-colors hover:text-primary"
-          >
-            A Challenge to Builders
-          </button>
+          <SectionHeader id="a-challenge-to-builders">A Challenge to Builders</SectionHeader>
 
           <div className="flex flex-col gap-8 font-sans">
             <p>
@@ -291,18 +234,9 @@ export default function InvisibleBlockchainPage() {
         </div>
 
         <div className="flex flex-col gap-8" id="the-future-wont-say-crypto">
-          <button
-            type="button"
-            onClick={() => {
-              document
-                .getElementById('the-future-wont-say-crypto')
-                ?.scrollIntoView({ behavior: 'smooth' });
-              window.history.pushState(null, '', '#the-future-wont-say-crypto');
-            }}
-            className="cursor-pointer text-left font-medium text-3xl text-foreground transition-colors hover:text-primary"
-          >
+          <SectionHeader id="the-future-wont-say-crypto">
             The Future Won't Say "Crypto"
-          </button>
+          </SectionHeader>
 
           <div className="flex flex-col gap-8 font-sans">
             <p>
