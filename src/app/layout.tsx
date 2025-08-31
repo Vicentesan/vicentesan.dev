@@ -12,7 +12,8 @@ const instrumentSerif = InstrumentSerif({
 });
 
 const inter = Inter({
-  variable: '--font-sans'
+  variable: '--font-sans',
+  subsets: ['latin']
 });
 
 export const metadata: Metadata = {
