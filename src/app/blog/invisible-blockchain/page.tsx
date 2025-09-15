@@ -61,7 +61,7 @@ export default function InvisibleBlockchainPage() {
         <h1 className="text-2xl text-foreground">
           Invisible Blockchain: Why Your Users Don't Care About Crypto
         </h1>
-        <p className="font-sans text-muted-foreground text-xs">September 31st, 2025</p>
+        <p className="font-sans text-muted-foreground text-xs">August 31st, 2025</p>
       </div>
 
       <article className="flex flex-col gap-8 text-neutral-800 tracking-tight dark:text-neutral-300">
