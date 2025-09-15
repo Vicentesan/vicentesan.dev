@@ -6,8 +6,8 @@ import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import brazilFlag from '@/assets/brazil.png';
-import tesseractLogo from '@/assets/tesseract-logo.png';
 import vicenteSanchez from '@/assets/vicentesan.jpg';
+import zumoLogo from '@/assets/zumo-logo.png';
 import { InfoWrapper } from '@/components/info-wrapper';
 import { GithubLogo } from '@/components/logos/github-logo';
 import { XLogo } from '@/components/logos/x';
@@ -94,12 +94,12 @@ export default function Home() {
           >
             <span className="text-muted-foreground">a {age}y/o swe building</span>
             <InfoWrapper
-              content="Tesseract is a opensource web2 and web3 baas."
-              link="https://x.com/usetesseract"
+              content="Zumo is a bank-like platform for fast, borderless stablecoin transfers across US and LATAM, with local withdrawals"
+              link="https://x.com/usezumo"
             >
-              <ProfileImage image={tesseractLogo} aria-hidden />
+              <ProfileImage image={zumoLogo} aria-hidden />
             </InfoWrapper>
-            <span>Tesseract</span>
+            <span>Zumo</span>
           </motion.div>
 
           <motion.div
