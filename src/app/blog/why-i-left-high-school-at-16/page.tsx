@@ -229,7 +229,7 @@ export default function WhyILeftHighSchoolAt16Page() {
           <p>
             Traditional education isn't for everyone. Sometimes the most growth happens on the roads
             less traveled. And sometimes, what looks like dropping out is actually dropping in. To a
-            life of purpose, authentic learning, and true mental health.
+            life of purpose, authentic learning, and true mental health
           </p>
         </div>
       </article>
