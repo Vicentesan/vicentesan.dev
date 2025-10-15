@@ -53,7 +53,7 @@ export const metadata = {
 
 export default function InvisibleBlockchainPage() {
   return (
-    <main className="relative mx-auto flex w-fit max-w-xl flex-col items-start text-neutral-300 justify-center text-[13px] gap-12 py-20 max-sm:px-10">
+    <main className="relative mx-auto flex w-fit max-w-xl flex-col items-start justify-center gap-12 py-20 text-[13px] text-neutral-300 max-sm:px-10">
       <ClientScrollHandler />
       <BackButton />
 

@@ -8,7 +8,7 @@ export default function Home() {
   const age = differenceInYears(today, birthDate);
 
   return (
-    <main className="flex h-screen w-fit items-start justify-center flex-col gap-8 text-[13px] text-muted-foreground uppercase px-10">
+    <main className="flex h-screen w-fit flex-col items-start justify-center gap-8 px-10 text-[13px] text-muted-foreground uppercase">
       <div className="flex flex-col gap-2">
         <h1 className="text-primary">Vicente Sanchez</h1>
         <p>São Paulo, Brazil</p>

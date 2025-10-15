@@ -16,7 +16,7 @@ export function SectionHeader({ id, children, className }: SectionHeaderProps) {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
         window.history.pushState(null, '', `#${id}`);
       }}
-      className={cn('cursor-pointer text-white text-left uppercase text-[13px]', className)}
+      className={cn('cursor-pointer text-left text-[13px] text-white uppercase', className)}
     >
       {children}
     </button>
