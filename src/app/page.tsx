@@ -1,18 +1,6 @@
-'use client';
-
 import { differenceInYears } from 'date-fns';
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import brazilFlag from '@/assets/brazil.png';
-import vicenteSanchez from '@/assets/vicentesan.jpg';
-import zumoLogo from '@/assets/zumo-logo.png';
-import { InfoWrapper } from '@/components/info-wrapper';
-import { GithubLogo } from '@/components/logos/github-logo';
-import { XLogo } from '@/components/logos/x';
-import { ProfileImage } from '@/components/profile-img';
-import { cn } from '@/lib/utils';
+
+import { AnimatedLink } from '@/components/animated-link';
 
 export default function Home() {
   const birthDate = new Date('2009-04-18');
@@ -20,142 +8,39 @@ export default function Home() {
   const age = differenceInYears(today, birthDate);
 
   return (
-    <main className="mx-auto mt-20 flex w-full max-w-7xl flex-col items-center justify-start overflow-hidden md:mt-0 md:h-screen md:justify-center">
-      <div className="flex flex-col items-start justify-start gap-4">
-        <div className="flex w-fit flex-col items-start gap-2 font-instrument-serif lg:gap-4">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 10,
-              filter: 'blur(4px)',
-              pointerEvents: 'none'
-            }}
-            className="flex items-center justify-center gap-6"
-            animate={{
-              opacity: 1,
-              y: 0,
-              filter: 'blur(0px)',
-              pointerEvents: 'auto'
-            }}
-            transition={{ duration: 0.5 }}
-          >
-            <InfoWrapper link="https://github.com/vicentesan" content="Check out my GitHub">
-              <GithubLogo className="size-4 sm:size-6" />
-            </InfoWrapper>
-
-            <InfoWrapper link="https://x.com/vicentesandev" content="Follow me on X/Twitter">
-              <XLogo className="size-4 sm:size-6" />
-            </InfoWrapper>
-          </motion.div>
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 10,
-              filter: 'blur(4px)',
-              pointerEvents: 'none'
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              filter: 'blur(0px)',
-              pointerEvents: 'auto'
-            }}
-            transition={{ duration: 0.5, delay: 1 * 0.2 }}
-            className={cn(
-              'flex flex-row items-center justify-start gap-0.5 text-foreground text-xl sm:text-3xl md:gap-2 lg:text-7xl'
-            )}
-          >
-            <span className="text-muted-foreground">Hey,</span>
-            <span>I&apos;m</span>
-            <InfoWrapper content="My Dinda Nata, aka Godmother Natalia, and I in Bariloche, Argentina.">
-              <ProfileImage image={vicenteSanchez} alt="Vicente Sanchez" />
-            </InfoWrapper>
-            <span>Vicente</span>
-          </motion.div>
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 10,
-              filter: 'blur(4px)',
-              pointerEvents: 'none'
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              filter: 'blur(0px)',
-              pointerEvents: 'auto'
-            }}
-            transition={{ duration: 0.5, delay: 2 * 0.2 }}
-            className={cn(
-              'flex flex-row items-center justify-start gap-0.5 font-instrument-serif text-foreground text-xl sm:text-3xl md:gap-2 lg:text-7xl'
-            )}
-          >
-            <span className="text-muted-foreground">a {age}y/o swe building</span>
-            <InfoWrapper
-              content="Zumo is a bank-like platform for fast, borderless stablecoin transfers across US and LATAM, with local withdrawals"
-              link="https://x.com/usezumo"
-            >
-              <ProfileImage image={zumoLogo} aria-hidden />
-            </InfoWrapper>
-            <span>Zumo</span>
-          </motion.div>
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 10,
-              filter: 'blur(4px)',
-              pointerEvents: 'none'
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              filter: 'blur(0px)',
-              pointerEvents: 'auto'
-            }}
-            transition={{ duration: 0.5, delay: 3 * 0.2 }}
-            className={cn(
-              'flex flex-row items-center justify-start gap-2 font-instrument-serif text-foreground text-xl sm:text-3xl lg:text-7xl'
-            )}
-          >
-            <span className="text-muted-foreground">currently based in</span>
-            <span>São Paulo, </span>
-            <Image
-              src={brazilFlag}
-              alt="Brazil"
-              className="pointer-events-none size-8 select-none sm:size-12 lg:size-24"
-            />
-            <span>Brazil</span>
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 10,
-            filter: 'blur(4px)',
-            pointerEvents: 'none'
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            filter: 'blur(0px)',
-            pointerEvents: 'auto'
-          }}
-          transition={{ duration: 0.5, delay: 0.9 }}
-          className="flex w-fit flex-row items-center justify-start gap-2 font-instrument-serif"
-        >
-          <Link
-            href="/blog/invisible-blockchain"
-            className="flex flex-row items-center gap-1 text-muted-foreground tracking-wide transition-colors duration-0 hover:text-foreground hover:duration-150"
-          >
-            Invisible Blockchain
-            <ArrowUpRight className="size-5" strokeWidth={1.5} />
-          </Link>
-        </motion.div>
+    <main className="flex h-screen w-fit items-start justify-center flex-col gap-8 text-[13px] text-muted-foreground uppercase px-10">
+      <div className="flex flex-col gap-2">
+        <h1 className="text-primary">Vicente Sanchez</h1>
+        <p>São Paulo, Brazil</p>
       </div>
+
+      <div className="flex flex-col gap-2">
+        <p className="text-muted-foreground">
+          {age}y/o high school dropout & foundation @{' '}
+          <AnimatedLink
+            variant="primary"
+            target="_blank"
+            href="https://tela.com"
+            alias
+            className="blur-sm"
+          >
+            tela.com
+          </AnimatedLink>
+        </p>
+
+        <p>
+          Passionated about <span className="text-primary">OSS</span>,{' '}
+          <span className="text-primary">DX</span> & <span className="text-primary">Web3</span>
+        </p>
+      </div>
+
+      <ul className="w-fit">
+        <li className="text-muted-foreground">
+          <AnimatedLink variant="secondary" href="/blog/invisible-blockchain" alias>
+            Invisible Blockchain
+          </AnimatedLink>
+        </li>
+      </ul>
     </main>
   );
 }

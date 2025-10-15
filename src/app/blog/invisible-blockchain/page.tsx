@@ -53,19 +53,19 @@ export const metadata = {
 
 export default function InvisibleBlockchainPage() {
   return (
-    <main className="relative mx-auto flex w-fit max-w-xl flex-col items-start justify-center gap-8 py-20 max-sm:px-10">
+    <main className="relative mx-auto flex w-fit max-w-xl flex-col items-start text-neutral-300 justify-center text-[13px] gap-12 py-20 max-sm:px-10">
       <ClientScrollHandler />
       <BackButton />
 
       <div className="flex flex-col gap-2">
-        <h1 className="text-2xl text-foreground">
+        <h1 className="text-white uppercase">
           Invisible Blockchain: Why Your Users Don't Care About Crypto
         </h1>
-        <p className="font-sans text-muted-foreground text-xs">September 31st, 2025</p>
+        <p className="text-muted-foreground text-xs uppercase">September 31st, 2025</p>
       </div>
 
-      <article className="flex flex-col gap-8 text-neutral-800 tracking-tight dark:text-neutral-300">
-        <div id="introduction" className="flex flex-col gap-8 font-sans">
+      <article className="flex flex-col gap-12">
+        <div id="introduction" className="flex flex-col gap-8 uppercase">
           <p>
             Crypto, DeFi, Web3, Blockchain, Smart Contracts, Wallets, Gas Fees, Private Keys,
             Consensus Mechanisms, Liquidity Pools, all these junky words move your users away. They
@@ -93,7 +93,7 @@ export default function InvisibleBlockchainPage() {
         <div id="the-mom-test" className="flex flex-col gap-8">
           <SectionHeader id="the-mom-test">The Mom Test</SectionHeader>
 
-          <div className="flex flex-col gap-8 font-sans">
+          <div className="flex flex-col gap-8 uppercase">
             <p>
               I once tried to get my mom to send me some Bitcoin while I was traveling. It was a
               disaster. I told her to use my old notebook where my Electrum wallet was stored
@@ -124,7 +124,7 @@ export default function InvisibleBlockchainPage() {
             Technology That Disappeared
           </SectionHeader>
 
-          <div className="flex flex-col gap-8 font-sans">
+          <div className="flex flex-col gap-8 uppercase">
             <p>
               Remember when touchscreens were cutting-edge technology? Now toddlers swipe phones
               before they can talk. QR codes went from weird marketing tricks to how millions of
@@ -143,7 +143,7 @@ export default function InvisibleBlockchainPage() {
             What People Actually Care About
           </SectionHeader>
 
-          <div className="flex flex-col gap-8 font-sans">
+          <div className="flex flex-col gap-8 uppercase">
             <p>
               When someone needs to send money, especially across borders, here's what they care
               about:
@@ -174,7 +174,7 @@ export default function InvisibleBlockchainPage() {
             Why Current Finance Still Fails
           </SectionHeader>
 
-          <div className="flex flex-col gap-8 font-sans">
+          <div className="flex flex-col gap-8 uppercase">
             <p>
               In Latin America, we have amazing regional payment systems like PIX in Brazil and SPEI
               in Mexico. They're fast and convenient, but only within their own countries. Try
@@ -193,7 +193,7 @@ export default function InvisibleBlockchainPage() {
         <div className="flex flex-col gap-8" id="what-good-looks-like">
           <SectionHeader id="what-good-looks-like">What "Good" Looks Like</SectionHeader>
 
-          <div className="flex flex-col gap-8 font-sans">
+          <div className="flex flex-col gap-8 uppercase">
             <p>Imagine an app where you:</p>
 
             <ul className="ml-4 list-disc">
@@ -218,7 +218,7 @@ export default function InvisibleBlockchainPage() {
         <div className="flex flex-col gap-8" id="a-challenge-to-builders">
           <SectionHeader id="a-challenge-to-builders">A Challenge to Builders</SectionHeader>
 
-          <div className="flex flex-col gap-8 font-sans">
+          <div className="flex flex-col gap-8 uppercase">
             <p>
               To my fellow young developers: let's be the generation that builds technology that
               solves real problems instead of creating new ones. Let's focus on making things that
@@ -238,7 +238,7 @@ export default function InvisibleBlockchainPage() {
             The Future Won't Say "Crypto"
           </SectionHeader>
 
-          <div className="flex flex-col gap-8 font-sans">
+          <div className="flex flex-col gap-8 uppercase">
             <p>
               I predict that within 5 years, the most successful "crypto" apps won't mention crypto
               at all. They'll just be the apps that send money faster, cheaper, and more reliably
