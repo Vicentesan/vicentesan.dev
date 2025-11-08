@@ -6,3 +6,7 @@
   --color-muted-foreground: #909090;
   --color-primary: #e5e5e5;
 }
+
+::selection {
+  @apply bg-neutral-50/10;
+}

@@ -1,8 +1,8 @@
-import './globals.css';
-
 import type { Metadata } from 'next';
 import { Geist_Mono } from 'next/font/google';
+
 import { cn } from '@/lib/utils';
+import './globals.css';
 
 const geistMono = Geist_Mono({
   subsets: ['latin'],
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <script src="https://assets.onedollarstats.com/stonks.js" />
       </head>

@@ -8,7 +8,7 @@ export default function Home() {
   const age = differenceInYears(today, birthDate);
 
   return (
-    <main className="flex h-screen w-fit flex-col items-start justify-center gap-8 px-10 text-[13px] text-muted-foreground uppercase">
+    <main className="flex h-screen w-fit flex-col items-start justify-center gap-8 p-10 px-10 text-[13px] text-muted-foreground uppercase">
       <div className="flex flex-col gap-2">
         <h1 className="text-primary">Vicente Sanchez</h1>
         <p>São Paulo, Brazil</p>
@@ -17,13 +17,7 @@ export default function Home() {
       <div className="flex flex-col gap-2">
         <p className="text-muted-foreground">
           {age}y/o high school dropout & foundation @{' '}
-          <AnimatedLink
-            variant="primary"
-            target="_blank"
-            href="https://tela.com"
-            alias
-            className="blur-sm"
-          >
+          <AnimatedLink variant="primary" target="_blank" href="https://tela.com" alias>
             tela.com
           </AnimatedLink>
         </p>
