@@ -2,6 +2,17 @@ import { differenceInYears } from 'date-fns';
 
 import { AnimatedLink } from '@/components/animated-link';
 
+const LINKS = [
+  {
+    label: '2026 Goals',
+    href: '/2026-goals'
+  },
+  {
+    label: 'Invisible Blockchain',
+    href: '/blog/invisible-blockchain'
+  }
+];
+
 export default function Home() {
   const birthDate = new Date('2009-04-18');
   const today = new Date();
@@ -28,12 +39,19 @@ export default function Home() {
         </p>
       </div>
 
-      <ul className="w-fit">
-        <li className="text-muted-foreground">
-          <AnimatedLink variant="secondary" href="/blog/invisible-blockchain" alias>
-            Invisible Blockchain
-          </AnimatedLink>
-        </li>
+      <ul className="flex w-fit gap-2">
+        {LINKS.map((link, i) => (
+          <div key={link.label} className="flex flex-row items-center justify-center gap-2">
+            <li className="flex flex-row items-center justify-center text-muted-foreground">
+              <AnimatedLink variant="secondary" href={link.href} alias>
+                {link.label}
+              </AnimatedLink>
+            </li>
+            {i < LINKS.length - 1 && (
+              <span className="size-1 rounded-full bg-muted-foreground/80" />
+            )}
+          </div>
+        ))}
       </ul>
     </main>
   );
