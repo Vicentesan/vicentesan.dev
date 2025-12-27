@@ -8,7 +8,7 @@ import { Checkbox } from '@/components/checkbox';
 import { GOALS_2026 } from '@/constants/goals';
 import { cn } from '@/lib/utils';
 
-export default function InvisibleBlockchainPage() {
+export default function GoalsPage() {
   const lastAchievedAt = useMemo(() => {
     let latest: Date | undefined;
 
@@ -22,7 +22,7 @@ export default function InvisibleBlockchainPage() {
   }, []);
 
   return (
-    <main className="relative mx-auto flex w-fit max-w-xl flex-col items-start justify-center gap-12 py-20 text-[13px] text-neutral-300 max-sm:px-10">
+    <main className="relative mx-auto flex w-full max-w-xl flex-col items-start justify-center gap-12 py-20 text-[13px] text-neutral-300 max-sm:px-10">
       <BackButton />
 
       <div className="flex flex-col gap-2">
