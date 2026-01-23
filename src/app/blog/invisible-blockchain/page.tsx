@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { BackButton } from '@/components/back-button';
-import { ClientScrollHandler } from './client-scroll-handler';
-import { SectionHeader } from './interactive-headers';
+import { ClientScrollHandler } from '@/components/client-scroll-handler';
+import { SectionHeader } from '@/components/interactive-headers';
 
 export const metadata = {
   title: "Invisible Blockchain: Why Your Users Don't Care About Crypto",

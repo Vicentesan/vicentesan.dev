@@ -30,7 +30,7 @@ export default function GoalsPage() {
         <p className="text-xs uppercase">a list of things i wanna do before the end of 2026</p>
         <p className="text-muted-foreground text-xs uppercase">
           Updated:{' '}
-          {formatDistanceToNow(lastAchievedAt ?? new Date('2025-12-23T16:27:00'), {
+          {formatDistanceToNow(lastAchievedAt ?? new Date('2025-12-28T14:41:00'), {
             addSuffix: true
           })}
         </p>

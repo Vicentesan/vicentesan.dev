@@ -27,9 +27,9 @@ export default function Home() {
 
       <div className="flex flex-col gap-2">
         <p className="text-muted-foreground">
-          {age}y/o high school dropout & foundation @{' '}
-          <AnimatedLink variant="primary" target="_blank" href="https://tela.com" alias>
-            tela.com
+          {age}y/o high school dropout & building{' '}
+          <AnimatedLink variant="primary" target="_blank" href="https://usezumo.com" alias>
+            usezumo.com
           </AnimatedLink>
         </p>
 
