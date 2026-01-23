@@ -30,8 +30,9 @@ export default function Home() {
         </p>
 
         <p>
-          Passionated about <span className="text-primary">OSS</span>,{' '}
-          <span className="text-primary">DX</span> & <span className="text-primary">Web3</span>
+          Passionated about <span className="text-primary">AI</span>,{' '}
+          <span className="text-primary">OSS</span>, <span className="text-primary">DX</span> &{' '}
+          <span className="text-primary">Web3</span>
         </p>
       </div>
 
