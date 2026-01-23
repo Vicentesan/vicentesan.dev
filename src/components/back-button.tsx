@@ -1,4 +1,4 @@
-import { ArrowLeft, Undo2 } from 'lucide-react';
+import { Undo2 } from 'lucide-react';
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
@@ -15,10 +15,10 @@ export function BackButton() {
       <Link
         href="/"
         title="Go back"
-        className="group flex items-end justify-center gap-2 text-muted-foreground hover:text-foreground"
+        className="group flex items-center justify-center gap-2 text-muted-foreground hover:text-foreground"
       >
         <Undo2 className="size-4" />
-        <span className="text-[13px] uppercase">Back</span>
+        <span className="text-[13px] uppercase leading-none">Back</span>
       </Link>
     </div>
   );

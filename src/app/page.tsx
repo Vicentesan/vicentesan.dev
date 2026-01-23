@@ -4,10 +4,6 @@ import { AnimatedLink } from '@/components/animated-link';
 
 const LINKS = [
   {
-    label: '2026 Goals',
-    href: '/2026-goals'
-  },
-  {
     label: 'Invisible Blockchain',
     href: '/blog/invisible-blockchain'
   }
@@ -26,11 +22,11 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <p className="text-muted-foreground">
-          {age}y/o high school dropout & building{' '}
-          <AnimatedLink variant="primary" target="_blank" href="https://usezumo.com" alias>
-            usezumo.com
-          </AnimatedLink>
+        <p className="flex items-center justify-center gap-2 text-muted-foreground">
+          {age}y/o high school dropout & foundation @{' '}
+          <span className="flex h-5 w-fit select-none items-center justify-center rounded-md border border-muted-foreground/40 border-dashed p-px">
+            <span className="blur">coming soon</span>
+          </span>
         </p>
 
         <p>
