@@ -1,29 +1,22 @@
 import type { Metadata } from 'next';
-import { Instrument_Serif as InstrumentSerif, Inter } from 'next/font/google';
-import { ThemeProvider } from '@/components/theme-provider';
-import { TooltipProvider } from '@/components/ui/tooltip';
+import { Geist_Mono } from 'next/font/google';
+
 import { cn } from '@/lib/utils';
 import './globals.css';
 
-const instrumentSerif = InstrumentSerif({
-  variable: '--font-instrument-serif',
+const geistMono = Geist_Mono({
   subsets: ['latin'],
-  weight: ['400']
-});
-
-const inter = Inter({
-  variable: '--font-sans',
-  subsets: ['latin']
+  variable: '--font-mono'
 });
 
 export const metadata: Metadata = {
   title: 'Vicente Sanchez',
-  description: 'Exploring the enchantment of Web3 with a focus on backend innovation.',
+  description: 'Exploring the enchantment of AI with a focus on backend innovation.',
   metadataBase: new URL('https://vicentesan.dev'),
   alternates: {
     canonical: '/'
   },
-  keywords: ['Full Stack Developer', 'Tesseract', 'Web2', 'Web3', 'São Paulo', 'Brazil'],
+  keywords: ['Backend Developer', 'AI', 'Web2', 'Web3', 'São Paulo', 'Brazil'],
   authors: [
     {
       name: 'Vicente Sanchez',
@@ -32,7 +25,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Vicente Sanchez',
-    description: 'Exploring the enchantment of Web3 with a focus on backend innovation.',
+    description: 'Exploring the enchantment of AI with a focus on backend innovation.',
     url: 'https://vicentesan.dev',
     siteName: 'Vicente Sanchez',
     images: [
@@ -49,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Vicente Sanchez',
-    description: 'Exploring the enchantment of Web3 with a focus on backend innovation.',
+    description: 'Exploring the enchantment of AI with a focus on backend innovation.',
     creator: '@vicentesandev',
     images: ['https://vicentesan.dev/opengraph-image.png']
   },
@@ -58,25 +51,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <script src="https://assets.onedollarstats.com/stonks.js" />
       </head>
       <body
         className={cn(
-          inter.variable,
-          instrumentSerif.className,
-          'overflow-x-hidden overflow-y-scroll'
+          geistMono.className,
+          'flex h-fit items-center justify-center overflow-x-hidden overflow-y-scroll bg-black antialiased'
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <TooltipProvider>{children}</TooltipProvider>
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

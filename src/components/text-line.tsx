@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import { cn } from '@/lib/utils'
-import { motion } from 'framer-motion'
-import type { ReactNode } from 'react'
+import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
+import { cn } from '@/lib/utils';
 
 interface TextLineProps {
-  children: ReactNode
-  className?: string
-  idx: number
+  children: ReactNode;
+  className?: string;
+  idx: number;
 }
 
 export function TextLine({ children, className = '', idx }: TextLineProps) {
@@ -23,5 +23,5 @@ export function TextLine({ children, className = '', idx }: TextLineProps) {
     >
       {children}
     </motion.div>
-  )
+  );
 }
