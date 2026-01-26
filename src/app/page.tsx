@@ -1,5 +1,4 @@
 import { differenceInYears } from 'date-fns';
-
 import { AnimatedLink } from '@/components/animated-link';
 
 const LINKS = [
@@ -16,17 +15,19 @@ export default function Home() {
 
   return (
     <main className="flex h-screen w-fit flex-col items-start justify-center gap-8 p-10 px-10 text-[13px] text-muted-foreground uppercase">
-      <div className="flex flex-col gap-2">
-        <h1 className="text-primary">Vicente Sanchez</h1>
-        <p>São Paulo, Brazil</p>
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <h1 className="text-primary">Vicente Sanchez</h1>
+          <p>São Paulo, Brazil</p>
+        </div>
       </div>
 
       <div className="flex flex-col gap-2">
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-pretty text-muted-foreground">
-          <span>{age}y/o high school dropout & foundation @</span>
-          <span className="inline-flex h-5 select-none items-center justify-center overflow-hidden rounded-md border border-muted-foreground/40 border-dashed px-2">
-            <span className="text-[11px] blur-[3px]">coming soon</span>
-          </span>
+          {age}y/o high school dropout & foundation @{' '}
+          <AnimatedLink href="https://tela.com" alias variant="primary">
+            tela.com
+          </AnimatedLink>
         </p>
 
         <p>
