@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={cn(
           geistMono.className,
-          'flex h-fit items-center justify-center overflow-x-hidden overflow-y-scroll bg-black antialiased'
+          'flex h-fit items-center justify-center overflow-x-hidden bg-black antialiased'
         )}
       >
         {children}
