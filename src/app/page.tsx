@@ -1,3 +1,5 @@
+'use client';
+
 import { differenceInYears } from 'date-fns';
 import { AnimatedLink } from '@/components/animated-link';
 
