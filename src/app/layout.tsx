@@ -53,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <script src="https://assets.onedollarstats.com/stonks.js" />
+        <script defer src="https://assets.onedollarstats.com/stonks.js" />
       </head>
       <body
         className={cn(
