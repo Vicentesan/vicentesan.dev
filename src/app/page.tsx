@@ -26,16 +26,15 @@ export default function Home() {
 
       <div className="flex flex-col gap-2">
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-pretty text-muted-foreground">
-          {age}y/o high school dropout & foundation @{' '}
+          {age}y/o HS dropout / DX & Foundation @{' '}
           <AnimatedLink href="https://tela.com" alias variant="primary" target="_blank">
             tela.com
           </AnimatedLink>
         </p>
 
         <p>
-          Passionated about <span className="text-primary">AI</span>,{' '}
-          <span className="text-primary">OSS</span>, <span className="text-primary">DX</span> &{' '}
-          <span className="text-primary">Web3</span>
+          Into <span className="text-primary">Systems</span>,{' '}
+          <span className="text-primary">OSS</span> & <span className="text-primary">Web3</span>
         </p>
       </div>
 
