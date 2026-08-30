@@ -14,8 +14,8 @@ export const metadata = {
     images: [
       {
         url: 'https://vicente.fyi/opengraph-image.png',
-        width: 400,
-        height: 400,
+        width: 1200,
+        height: 630,
         alt: 'Vicente Sanchez'
       }
     ],
