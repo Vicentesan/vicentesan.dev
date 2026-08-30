@@ -2,9 +2,9 @@
 @import "tw-animate-css";
 
 @theme inline {
-  --color-foreground: #ffffff;
-  --color-muted-foreground: #909090;
-  --color-primary: #e5e5e5;
+  --color-foreground: #000;
+  --color-muted-foreground: #6f6f6f;
+  --color-primary: #1a1a1a;
 }
 
 ::selection {

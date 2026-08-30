@@ -11,26 +11,26 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Vicente Sanchez',
-  description: 'Exploring the enchantment of AI with a focus on backend innovation.',
-  metadataBase: new URL('https://vicentesan.dev'),
+  description: 'Building backend systems, fintech infrastructure, and weird ideas on the web.',
+  metadataBase: new URL('https://vicente.fyi'),
   alternates: {
     canonical: '/'
   },
-  keywords: ['Backend Developer', 'AI', 'Web2', 'Web3', 'São Paulo', 'Brazil'],
+  keywords: ['Backend Developer', 'AI', 'Web3', 'São Paulo', 'Brazil'],
   authors: [
     {
       name: 'Vicente Sanchez',
-      url: 'https://vicentesan.dev'
+      url: 'https://vicente.fyi'
     }
   ],
   openGraph: {
     title: 'Vicente Sanchez',
-    description: 'Exploring the enchantment of AI with a focus on backend innovation.',
-    url: 'https://vicentesan.dev',
+    description: 'Building backend systems, fintech infrastructure, and weird ideas on the web.',
+    url: 'https://vicente.fyi',
     siteName: 'Vicente Sanchez',
     images: [
       {
-        url: 'https://vicentesan.dev/opengraph-image.png',
+        url: 'https://vicente.fyi/opengraph-image.png',
         width: 400,
         height: 400,
         alt: 'Vicente Sanchez'
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Vicente Sanchez',
-    description: 'Exploring the enchantment of AI with a focus on backend innovation.',
+    description: 'Building backend systems, fintech infrastructure, and weird ideas on the web.',
     creator: '@vicentesandev',
-    images: ['https://vicentesan.dev/opengraph-image.png']
+    images: ['https://vicente.fyi/opengraph-image.png']
   },
   robots: 'index, follow'
 };
@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={cn(
           geistMono.className,
-          'flex h-fit items-center justify-center overflow-x-hidden bg-black antialiased'
+          'flex h-fit items-center justify-center overflow-x-hidden bg-white antialiased'
         )}
       >
         {children}

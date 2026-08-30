@@ -13,7 +13,7 @@ export const metadata = {
       "The future of finance isn't about showing off blockchain, it's about making it disappear",
     images: [
       {
-        url: 'https://vicentesan.dev/opengraph-image.png',
+        url: 'https://vicente.fyi/opengraph-image.png',
         width: 400,
         height: 400,
         alt: 'Vicente Sanchez'
@@ -29,7 +29,7 @@ export const metadata = {
     title: "Invisible Blockchain: Why Your Users Don't Care About Crypto",
     description:
       "The future of finance isn't about showing off blockchain, it's about making it disappear",
-    images: ['https://vicentesan.dev/opengraph-image.png'],
+    images: ['https://vicente.fyi/opengraph-image.png'],
     creator: '@vicentesandev'
   },
   keywords: [
@@ -47,18 +47,18 @@ export const metadata = {
   authors: [{ name: 'Vicente Sanchez' }],
   category: 'Finance Technology',
   alternates: {
-    canonical: 'https://vicentesan.dev/blog/invisible-blockchain'
+    canonical: 'https://vicente.fyi/blog/invisible-blockchain'
   }
 } satisfies Metadata;
 
 export default function InvisibleBlockchainPage() {
   return (
-    <main className="relative mx-auto flex w-fit max-w-xl flex-col items-start justify-center gap-12 py-20 text-[13px] text-neutral-300 max-sm:px-10">
+    <main className="relative mx-auto flex w-fit max-w-xl flex-col items-start justify-center gap-12 py-20 text-[13px] text-neutral-500 max-sm:px-10">
       <ClientScrollHandler />
       <BackButton />
 
       <div className="flex flex-col gap-2">
-        <h1 className="text-white uppercase">
+        <h1 className="text-primary uppercase">
           Invisible Blockchain: Why Your Users Don't Care About Crypto
         </h1>
         <p className="text-muted-foreground text-xs uppercase">September 31st, 2025</p>
