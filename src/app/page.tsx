@@ -26,10 +26,7 @@ export default function Home() {
 
       <div className="flex flex-col gap-2">
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-pretty text-muted-foreground">
-          {age}y/o HS dropout / DX & Foundation @{' '}
-          <AnimatedLink href="https://tela.com" alias variant="primary" target="_blank">
-            tela.com
-          </AnimatedLink>
+          {age}y/o HS dropout / Engineer & Builder
         </p>
 
         <p>
