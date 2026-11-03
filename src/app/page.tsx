@@ -26,7 +26,10 @@ export default function Home() {
 
       <div className="flex flex-col gap-2">
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-pretty text-muted-foreground">
-          {age}y/o HS dropout / Engineer & Builder
+          {age}y/o HS dropout / Product Engineer @{' '}
+          <AnimatedLink href="https://warp.co" alias variant="primary" target="_blank">
+            warp.co
+          </AnimatedLink>
         </p>
 
         <p>
