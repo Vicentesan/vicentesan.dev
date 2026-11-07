@@ -18,7 +18,7 @@ export function BackButton() {
         className="group flex items-center justify-center gap-2 text-muted-foreground hover:text-foreground"
       >
         <Undo2 className="size-4" />
-        <span className="text-[13px] uppercase leading-none">Back</span>
+        <span className="text-[13px] leading-none">Back</span>
       </Link>
     </div>
   );
