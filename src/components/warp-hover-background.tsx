@@ -1,22 +1,12 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 export function WarpHoverBackground({ active }: { active: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [alwaysVisible, setAlwaysVisible] = useState(false);
-  const visible = active || alwaysVisible;
 
   useEffect(() => {
-    const media = window.matchMedia('(hover: none), (pointer: coarse)');
-    const update = () => setAlwaysVisible(media.matches);
-    update();
-    media.addEventListener('change', update);
-    return () => media.removeEventListener('change', update);
-  }, []);
-
-  useEffect(() => {
-    if (!visible) return;
+    if (!active) return;
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
     if (!canvas || !ctx) return;
@@ -141,7 +131,7 @@ export function WarpHoverBackground({ active }: { active: boolean }) {
       motion.removeEventListener('change', start);
       document.removeEventListener('visibilitychange', start);
     };
-  }, [visible]);
+  }, [active]);
 
-  return <canvas ref={canvasRef} className="warp-hover-background" data-active={visible} aria-hidden="true" />;
+  return <canvas ref={canvasRef} className="warp-hover-background" data-active={active} aria-hidden="true" />;
 }
