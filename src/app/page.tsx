@@ -12,6 +12,11 @@ const LINKS = [
   }
 ];
 
+const SOCIALS = [
+  { label: 'github', href: 'https://github.com/Vicentesan' },
+  { label: 'x', href: 'https://x.com/vicentesandev' }
+];
+
 export default function Home() {
   const [warpHovered, setWarpHovered] = useState(false);
   const [warpFocused, setWarpFocused] = useState(false);
@@ -62,6 +67,17 @@ export default function Home() {
           </div>
         ))}
       </ul>
+
+      <footer className="fixed bottom-10 left-10 flex flex-row flex-wrap items-center gap-x-1 text-[13px]">
+        {SOCIALS.map((social, i) => (
+          <span key={social.label} className="flex flex-row items-center gap-x-1">
+            {i > 0 && <span>/</span>}
+            <AnimatedLink variant="primary" href={social.href} target="_blank">
+              {social.label}
+            </AnimatedLink>
+          </span>
+        ))}
+      </footer>
     </main>
   );
 }
