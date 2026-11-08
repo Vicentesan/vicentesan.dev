@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={cn(
           inter.variable,
-          'flex h-fit items-center justify-center overflow-x-hidden bg-white antialiased font-sans lowercase'
+          'flex h-fit items-center justify-center overflow-x-hidden bg-white font-sans lowercase antialiased'
         )}
       >
         {children}
