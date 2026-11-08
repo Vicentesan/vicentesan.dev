@@ -1,3 +1,4 @@
+import { GeistMono } from 'geist/font/mono';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={cn(
           inter.variable,
+          GeistMono.variable,
           'flex h-fit items-center justify-center overflow-x-hidden bg-white font-sans lowercase antialiased'
         )}
       >
