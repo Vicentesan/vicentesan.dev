@@ -1,0 +1,156 @@
+---
+title: 'Make Workload Identity Easier Than API Keys'
+label: 'Workload Identity'
+description: 'A proposal for helping API providers accept workload identity and consumers obtain short-lived credentials.'
+date: '2026-11-08'
+category: 'Developer Infrastructure'
+author: 'Vicente Sanchez'
+keywords:
+  - oidc
+  - workload identity
+  - oauth
+  - token exchange
+  - api security
+  - short-lived credentials
+  - effect
+  - typescript
+  - sdk
+---
+
+I'd like API clients to obtain short-lived credentials using the identity of the workload they're running in. A deployment workflow could upload an artifact using its CI identity, without someone first creating an API key and copying it into the CI settings.
+
+For an API provider to support that, it needs a way to configure trusted workloads, verify their assertions, and connect them to customer accounts and permissions. The client needs to obtain those assertions and exchange them for credentials, then keep working as the credentials expire.
+
+I'd build a toolkit covering both sides. Providers would integrate federation with their existing authorization system. Consumers would get a credential source they could plug into an API client. An artifact-storage API is a useful example because the permissions are concrete: a particular workflow should be able to upload build output to a particular account.
+
+## Provider setup
+
+The customer would begin in the artifact API's federation settings. An administrator would bind the deployment workflow to their account with a configuration like this:
+
+- Issuer: `https://token.actions.githubusercontent.com`
+- Assertion audience: `https://api.example.com/federation`
+- Subject: `repo:example/web:environment:production`
+- Additional condition: `repository_id` equals the customer's repository ID
+- Local account: `acct_example`; principal: `web-production`
+- Allowed scope: `artifacts:write`
+
+The setup UI would use the repository's actual [subject format](https://docs.github.com/en/actions/reference/security/oidc), including immutable IDs where configured. Only an authenticated administrator with permission to manage that account could save the binding. Possessing a workflow token would give no permission to create one.
+
+At runtime, the workflow requests an assertion for the configured audience and exchanges it for the API's access token. The provider resolves the verified identity to that binding, checks the account's current permissions, and grants the permitted scopes. Artifact handlers still check which account owns the destination.
+
+[OIDC](https://openid.net/specs/openid-connect-core-1_0.html) supplies identity semantics on top of OAuth 2.0. An ID token accepted under this federation profile identifies the workflow. The access token issued by the API authorizes its requests. An arbitrary ID token from a login flow would not qualify.
+
+I'd use [RFC 8693 token exchange](https://www.rfc-editor.org/rfc/rfc8693.html) at the provider's OAuth token endpoint. The request carries `subject_token`, its configured token type, the requested API audience, and scopes. The response supplies the provider token, issued token type, bearer usage, and lifetime. [Authorization-server metadata](https://www.rfc-editor.org/rfc/rfc8414.html) advertises endpoint capabilities; the accepted issuer profiles need their own documentation.
+
+For this first profile, an accepted bearer assertion would be sufficient to exchange, without another static client secret. Anyone who steals it could attempt the same exchange until it expires or other controls reject it. The scope and account restrictions therefore apply at issuance as well as during API requests.
+
+## Provider API
+
+The provider integration would expose the exchange operation as a function-valued Effect service. These proposed excerpts use Effect v4's documented [Context.Service](https://effect.website/docs/v4/api/effect/Context) and [Layer.effect](https://effect.website/docs/v4/api/effect/Layer). The SDK doesn't exist yet; application types, adapter implementations, and HTTP handling are omitted.
+
+```ts
+export class TokenExchange extends Context.Service<
+  TokenExchange,
+  (request: ExchangeRequest) => Effect.Effect<TokenResponse, ExchangeError>
+>()("federation/TokenExchange") {}
+
+const handleExchange = (request: ExchangeRequest) =>
+  Effect.gen(function* () {
+    const exchange = yield* TokenExchange;
+    return yield* exchange(request);
+  });
+```
+
+Its layer would capture the verifier, trust store, and existing token issuer through a provider adapter:
+
+```ts
+const tokenExchangeLayer = Layer.effect(
+  TokenExchange,
+  Effect.gen(function* () {
+    const adapters = yield* ProviderAdapters;
+
+    return (request: ExchangeRequest) => Effect.gen(function* () {
+      const identity = yield* adapters.verifyAssertion(request);
+      const grant = yield* adapters.trust.resolveAndAuthorize(identity, request);
+      return yield* adapters.tokens.issue(grant);
+    });
+  }),
+);
+```
+
+`verifyAssertion` would select an administrator-approved issuer profile with pinned token kind, algorithms, and claim rules. A maintained JOSE verifier would validate the signature, exact issuer, audience, expiry, and required time claims. Discovery would use configured issuer locations, never an arbitrary JWKS URL from an incoming token. Unknown keys and failed validation would reject the exchange, with bounded key caching and explicit clock tolerance.
+
+`resolveAndAuthorize` would enforce the saved subject and claim conditions, map the workload to its account, and reject scopes outside the binding or current account permissions. `issue` would call the provider's existing token machinery. Each exchange request would be verified and authorized independently.
+
+The provider would implement these adapters against its storage and authorization server. The toolkit would supply issuer profiles, verification, and the exchange endpoint adapter. Parsing and claim-matching helpers could remain ordinary functions.
+
+## Consumer API
+
+Once that binding is configured, the deployment workflow needs a token for `artifacts:write`. I'd expose acquisition through a service that the artifact client could call whenever it needs credentials:
+
+```ts
+export class GetAccessToken extends Context.Service<
+  GetAccessToken,
+  (request: CredentialRequest) => Effect.Effect<AccessToken, CredentialError>
+>()("federation/GetAccessToken") {}
+
+const credentialRequest: CredentialRequest = {
+  audience: "https://api.example.com",
+  scopes: ["artifacts:write"],
+};
+
+const acquireToken = Effect.gen(function* () {
+  const getToken = yield* GetAccessToken;
+  return yield* getToken(credentialRequest);
+});
+```
+
+A configured layer would supply the CI credential source, exchange server, assertion audience, account binding, and cache. In this example, the source would request a GitHub Actions assertion through the runner's supported mechanism, using the audience saved in the provider setup. The workflow would need permission to request an OIDC token. The SDK would send the assertion to the exchange endpoint and retain the resulting API token for subsequent uploads.
+
+The cache needs to distinguish server, audience, normalized scopes, source identity, and subject/account binding. Otherwise, a process handling multiple accounts could return a token for the wrong customer. Concurrent callers should share one refresh, starting before expiry with a skew allowance. Expired tokens must never be returned.
+
+Effect gives the acquisition path typed failures and cancellation. Callers should be able to distinguish unavailable identity, rejected trust, insufficient scope, and transport failure. Bounded retries can handle transient acquisition errors. They must not replay an API operation after an ambiguous timeout: uploading an artifact or charging a customer requires the application's own retry and idempotency policy. Tokens and authorization headers must stay out of logs.
+
+Ordinary async TypeScript clients would use a Promise adapter with the same credential lifecycle, a cache preserved across calls, and explicit cleanup.
+
+## Deploying infrastructure without a stored provider token
+
+Take an [Alchemy](https://alchemy.run/) deployment to Cloudflare from GitHub Actions. Alchemy's [CI setup](https://alchemy.run/cloudflare/tutorial/part-5/) currently uses a Cloudflare API token. With workload federation, the account administrator could instead configure a rule in the Cloudflare dashboard:
+
+> Trust the production environment of this GitHub repository to deploy Workers in this Cloudflare account.
+
+This is a proposed Cloudflare integration, not a feature I've verified exists today. The rule would specify the trusted issuer, repository identity, environment, and allowed account permissions. Trusting GitHub as an issuer alone wouldn't grant every GitHub repository access.
+
+When the deployment runs, the job would request a signed assertion from GitHub, addressed to Cloudflare's exchange endpoint. Our consumer SDK would send it to that endpoint. Cloudflare would verify the assertion, match it against the saved rule, and issue a short-lived API token restricted to those deployment permissions. Alchemy would use that token for its normal Cloudflare API calls.
+
+[Alchemy's credential services](https://alchemy.run/environments/auth-providers/) provide an integration point for acquiring and refreshing credentials during a deployment. The initial trust setup would still require an account administrator, but subsequent jobs wouldn't need a copied Cloudflare token in their CI secrets.
+
+Cloudflare would have to implement the provider side: accepting the assertion, enforcing the trust rule, and issuing a credential its management API accepts. Installing our consumer SDK in Alchemy couldn't add that support on its own.
+
+## Identity after deployment
+
+The identity used to deploy an application is separate from the identity it uses while running. If a CI job builds an image and deploys twenty Kubernetes pods, its deployment credential stays with the job. It shouldn't be baked into the image or copied into those pods.
+
+Each pod can receive its own short-lived, pod-bound service-account token through a projected volume, with an audience configured for the external API's exchange. Kubernetes rotates that token. The consumer SDK would reread the current token when needed, exchange it, and cache the API credential within that pod.
+
+Those twenty tokens needn't represent twenty separately configured application identities. Replicas usually share a Kubernetes service account and therefore the same subject, such as `system:serviceaccount:production:payments`. Pod-bound tokens also carry pod-specific claims, including the pod UID. A provider could use those claims for finer restrictions or auditing, but the usual trust rule would authorize the service account:
+
+> Trust the payments service account in this cluster's production namespace to access this API account.
+
+The provider would validate the configured cluster issuer, signature, audience, expiry, and claim restrictions. A cluster-specific issuer profile would define the accepted claims and how verification keys are obtained. Offline signature verification alone wouldn't prove that a pod still exists; early invalidation would need additional checks, or the provider would rely on short lifetimes. Each replica would acquire and refresh its own API credentials under that shared application policy.
+
+For Cloudflare Workers, the same separation would apply: permission to deploy a Worker shouldn't automatically give it runtime access to every external API. With runtime identity support, the external API could trust a particular Worker and environment in a particular Cloudflare account, and the Worker could obtain assertions to exchange for narrowly scoped API credentials.
+
+That Worker flow is also a proposed integration. It would require Cloudflare to expose verifiable runtime assertions and the external API to accept them. A Worker doesn't need a separately configured identity for every invocation or isolate; those executions could act under the deployed application's identity while obtaining short-lived credentials as needed.
+
+## What I'd validate first
+
+[Vercel's OIDC UI and Connect](https://vercel.com/blog/death-to-long-lived-static-credentials) already provide trust-configuration forms, verification code, and runtime token brokerage. This proposal would connect provider onboarding and consumer credential management through a documented exchange profile. I'd design the exchange contract and the SDK APIs together, then validate them with one issuer and a reference artifact API.
+
+The reference integration should exercise the full sequence: an administrator creates a binding, a workflow uploads an artifact, credentials refresh during later uploads, and the administrator removes the binding. Tests should cover account isolation, rejected audiences, key rotation, and concurrent refresh. Removing the binding must prevent new exchanges; the provider also needs a documented policy for outstanding access tokens.
+
+Local development still needs a supported developer-login flow with development-scoped permissions. A developer should be able to test an upload without copying a CI token onto their laptop. APIs that only accept static keys would continue requiring them until the provider implements federation.
+
+Self-hosted issuance could follow later. Malte Ubl's [KMS and JWKS discussion](https://x.com/cramforce/status/2113442466305397215) describes signing and public-key distribution. An issuer also has to authenticate workloads and control which claims they receive. That matters during a compromise: an attacker controlling a workload may keep obtaining fresh assertions until its issuance access or provider trust is revoked.
+
+For the first version, I'd want an API vendor to be able to run the reference integration against its own account and permission model. That would show where the adapters fit, which policies the vendor must supply, and whether a customer can configure a workflow and keep it running without distributing a provider key.

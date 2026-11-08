@@ -64,7 +64,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { default: Content } = await import(`@/content/blog/${slug}.mdx`);
 
   return (
-    <main className="relative mx-auto flex w-fit max-w-lg flex-col items-start justify-center gap-8 py-20 text-[13px] text-neutral-500 max-sm:px-10">
+    <main className="relative mx-auto flex w-full max-w-xl flex-col items-start justify-center gap-8 px-6 py-20 text-[13px] text-neutral-500 sm:px-10">
       <ClientScrollHandler />
       <BackButton />
 
@@ -73,7 +73,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <p className="text-muted-foreground text-xs">{formatPostDate(post.date)}</p>
       </div>
 
-      <article className="flex flex-col gap-4">
+      <article className="flex w-full min-w-0 flex-col gap-4">
         <Content />
       </article>
     </main>

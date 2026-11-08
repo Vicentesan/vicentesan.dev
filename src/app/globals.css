@@ -5,6 +5,18 @@
   --color-foreground: #000;
   --color-muted-foreground: #6f6f6f;
   --color-primary: #1a1a1a;
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Code blocks scroll horizontally rather than wrapping, so the scrollbar is
+   hidden to keep the frame clean on short overflows. */
+.code-block-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.code-block-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 ::selection {
