@@ -8,7 +8,11 @@
 }
 
 ::selection {
-  @apply bg-primary/10 } .warp-hover-background { position: fixed;
+  @apply bg-primary/10;
+}
+
+.warp-hover-background {
+  position: fixed;
   inset: 0 0 auto;
   width: 100%;
   height: 35svh;
