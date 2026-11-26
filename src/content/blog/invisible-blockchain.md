@@ -5,17 +5,7 @@ description: "The future of finance isn't about showing off blockchain, it's abo
 date: '2025-08-31'
 category: 'Finance Technology'
 author: 'Vicente Sanchez'
-keywords:
-  - blockchain
-  - crypto
-  - defi
-  - user experience
-  - fintech
-  - latin america
-  - pix
-  - spei
-  - cross-border payments
-  - invisible technology
+keywords: blockchain, crypto, defi, user experience, fintech, latin america, pix, spei, cross-border payments, invisible technology
 ---
 
 Crypto, DeFi, Web3, Blockchain, Smart Contracts, Wallets, Gas Fees, Private Keys, Consensus
